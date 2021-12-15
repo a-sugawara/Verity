@@ -1,1 +1,35 @@
 /* TODO Add site wide styles */
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
+*{
+    font-family: 'Mukta', sans-serif;
+}
+body{
+    margin: 0;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.109);
+    margin-bottom: 1rem;
+}
+
+.navbtn-holder{
+    display: flex;
+    gap: 1rem;
+}
+
+.navbtn{
+    /* box-shadow: 0 2px 3px rgba(0, 0, 0, 0.253) ; */
+    border-radius:3px;
+    background-color: #254542;
+    padding:0.25rem 1.5rem;
+    font-weight: 300;
+    color:white;
+}
+.navbtn:hover{
+    cursor: pointer;
+    border-radius:3px;
+    background-color: #1d3835;
+}

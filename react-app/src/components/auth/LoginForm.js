@@ -10,6 +10,11 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  const demoLogin = async() => {
+    await dispatch(login('demo@aa.io', 'password'));
+
+}
+
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
@@ -58,7 +63,9 @@ const LoginForm = () => {
         />
         <button type='submit'>Login</button>
       </div>
+      <div className="navbtn" onClick={demoLogin}>Demo Login</div>
     </form>
+
   );
 };
 
