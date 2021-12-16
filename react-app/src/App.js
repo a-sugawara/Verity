@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
@@ -8,6 +8,9 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import { getAllArticles } from './store/articles';
+import AllArticles from './components/AllArticles';
+import ArticleForm from './components/ArticleForm'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -18,7 +21,10 @@ function App() {
       await dispatch(authenticate());
       setLoaded(true);
     })();
+    dispatch(getAllArticles())
   }, [dispatch]);
+
+  let articles = useSelector(state => state.articles.articles)
 
   if (!loaded) {
     return null;
@@ -37,12 +43,21 @@ function App() {
         <Route path='/users' exact={true} >
           <UsersList/>
         </Route>
+        <Route path='/home' exact={true}>
+          <AllArticles articles={articles}/>
+        </Route>
+        <Route path='/' exact={true} >
+          <AllArticles articles={articles}/>
+        </Route>
+        <Route path='/declare' exact={true} >
+          <ArticleForm/>
+        </Route>
+        <ProtectedRoute path='/declare' exact={true} >
+          form
+        </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </Route>
       </Switch>
     </BrowserRouter>
   );
