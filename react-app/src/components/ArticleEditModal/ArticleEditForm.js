@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {useHistory} from 'react-router-dom'
-import {postArticle} from "../../store/articles"
+import {useHistory,useParams} from 'react-router-dom'
+import {editArticle} from "../../store/articles"
 
-const ArticleForm = () =>{
+const ArticleEditForm = () =>{
+    const id = useParams()
     const dispatch = useDispatch()
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user)
@@ -43,13 +44,13 @@ const ArticleForm = () =>{
         if(errorsArr.length) {
             setErrors(errorsArr)
         } else{
-            const projectInfo = {
+            const articleInfo = {
                 user_id:sessionUser.id,
                 title,
                 description,
                 article
             }
-            const data = await dispatch(postArticle(projectInfo))
+            const data = await dispatch(editArticle(articleInfo, id))
             if(data) {
                 setErrors(data)
             } else {
@@ -89,4 +90,4 @@ const ArticleForm = () =>{
                 </form>
     </div>
 }
-export default ArticleForm;
+export default ArticleEditForm;
