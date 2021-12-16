@@ -17,7 +17,6 @@ function LoginModal(){
                     <LoginForm />
                 </Modal>
             )}
-
         </div>
     )
 }

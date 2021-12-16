@@ -1,7 +1,7 @@
 .cards-container{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     width:100%;
     margin-top: 10rem;
 }
@@ -9,18 +9,36 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width:100%
+    width:50%
 }
 
 .article-card{
     display: flex;
     flex-direction:column;
-    width:50%;
+    width:100%;
     background-color: #ffffff  ;
     height: 35rem;
-    border-radius: 11px;
+    /* border-radius: 11px; */
     box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.253) ;
+    transition: all 0.3s linear;
+}
 
+.test-prev{
+    transform: translate(-200%, -50%) rotate(-180deg);
+}
+.test-next{
+    transform: translate(200%, -50%) rotate(180deg)
+}
+
+.article-card:hover{
+    display: flex;
+    flex-direction:column;
+    width:100%;
+    background-color: #ffffff  ;
+    height: 35rem;
+    /* border-radius: 11px; */
+    transform:scale(1.01);
+    box-shadow: 25px 25px 10px rgba(0, 0, 0, 0.253) ;
 }
 .article{
     display: flex;
@@ -46,7 +64,8 @@
     margin: 0.5rem;
 }
 .article-description > a{
-    background-color:#C49A68;
+    background-color:#594F4F;
+    color:#ffffff;
     border-radius: 3px;
     padding: 0.25rem 0.5rem;
     margin: 0.5rem
@@ -59,7 +78,34 @@
     align-items: center;
     font-size: 3rem;
     font-weight: 500;
-    background-color:#C06C84 ;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    background-color:#547980 ;
+    /* border-top-left-radius: 10px;
+    border-top-right-radius: 10px; */
+}
+.carbtn{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:6rem;
+    width:6rem;
+    color: #fff;
+    background-color: #594F4F;
+    font-size: 5rem;
+    font-weight: 700;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253) ;
+    transition: all 0.15s linear;
+}
+.carbtn:hover{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:6rem;
+    width:6rem;
+    color: #fff;
+    background-color: #44464b;
+    font-size: 5rem;
+    font-weight: 700;
+    cursor:pointer;
+    transform:scale(0.95);
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.253) ;
 }

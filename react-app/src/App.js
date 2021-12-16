@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import { getAllArticles } from './store/articles';
 import AllArticles from './components/AllArticles';
 import ArticleForm from './components/ArticleForm'
+import OneArticle from './components/OneArticle';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -22,6 +23,7 @@ function App() {
       setLoaded(true);
     })();
     dispatch(getAllArticles())
+
   }, [dispatch]);
 
   let articles = useSelector(state => state.articles.articles)
@@ -29,6 +31,7 @@ function App() {
   if (!loaded) {
     return null;
   }
+
 
   return (
     <BrowserRouter>
@@ -48,6 +51,9 @@ function App() {
         </Route>
         <Route path='/' exact={true} >
           <AllArticles articles={articles}/>
+        </Route>
+        <Route path='/articles/:id' exact={true} >
+          <OneArticle/>
         </Route>
         <Route path='/declare' exact={true} >
           <ArticleForm/>

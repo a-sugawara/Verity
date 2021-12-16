@@ -33,21 +33,22 @@ def post_article():
     form = ArticleForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        print("xxxxxxxxxxx", form.data)
         article = Article(
             user_id=form.data['user_id'],
             title=form.data['title'],
             description=form.data['description'],
-            article=form.data['category_id'],
+            article=form.data['article'],
         )
         db.session.add(article)
         db.session.commit()
 
-        image = Image(
-            image = form.data['image_url'],
-            article_id = article.id
-        )
-        db.session.add(image)
-        db.session.commit()
+        # image = Image(
+        #     image = form.data['image_url'],
+        #     article_id = article.id
+        # )
+        # db.session.add(image)
+        # db.session.commit()
         return article.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
