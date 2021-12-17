@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: space-around;
     width:100%;
+    min-width: 75rem;
     margin-top: 10rem;
 }
 .article-card-container{
@@ -14,10 +15,10 @@
 
 .article-card{
     display: flex;
-    flex-direction:column;
+    /* flex-direction:column; */
     width:100%;
     background-color: #ffffff  ;
-    height: 35rem;
+    height: 25rem;
     /* border-radius: 11px; */
     box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.253) ;
     transition: all 0.3s linear;
@@ -32,10 +33,10 @@
 
 .article-card:hover{
     display: flex;
-    flex-direction:column;
+    /* flex-direction:column; */
     width:100%;
     background-color: #ffffff  ;
-    height: 35rem;
+    height: 25rem;
     /* border-radius: 11px; */
     transform:scale(1.01);
     box-shadow: 25px 25px 10px rgba(0, 0, 0, 0.253) ;

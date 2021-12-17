@@ -4,7 +4,7 @@ import {useHistory,useParams} from 'react-router-dom'
 import {editArticle} from "../../store/articles"
 
 const ArticleEditForm = () =>{
-    const id = useParams()
+    const {id} = useParams()
     const dispatch = useDispatch()
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user)
@@ -53,8 +53,6 @@ const ArticleEditForm = () =>{
             const data = await dispatch(editArticle(articleInfo, id))
             if(data) {
                 setErrors(data)
-            } else {
-                history.push('/home')
             }
         }
     }
@@ -65,7 +63,7 @@ const ArticleEditForm = () =>{
                     <div key={ind}>{error.split(':')[1]}</div>
                 ))}
                 </div>
-        <form className='project-form' onSubmit={handleSubmit}>
+        <form className='article-form' onSubmit={handleSubmit}>
                     <input
                     className='article-title-input'
                     placeholder='Title'
@@ -85,7 +83,6 @@ const ArticleEditForm = () =>{
                     value = {article}
                     onChange= {(e) => setArticle(e.target.value)}/>
                     <button type='submit'
-
                         className="article-submit-button">Submit</button>
                 </form>
     </div>
