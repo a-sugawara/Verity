@@ -19,11 +19,11 @@ class ArticleForm(FlaskForm):
     user_id = IntegerField('user_id', validators=[DataRequired()])
     title = StringField('title', validators=[DataRequired()])
     description = StringField('description', validators=[DataRequired()])
-    article = TextAreaField('category_id', validators=[DataRequired()])
+    article = TextAreaField('article', validators=[DataRequired()])
 
     # image_url = StringField('image_url', validators=[DataRequired()])
 class ArticleEditForm(FlaskForm):
     user_id = IntegerField('user_id', validators=[DataRequired()])
     title = StringField('title', validators=[DataRequired()])
     description = StringField('description', validators=[DataRequired()])
-    article = TextAreaField('category_id', validators=[DataRequired()])
+    article = TextAreaField('article', validators=[DataRequired()])

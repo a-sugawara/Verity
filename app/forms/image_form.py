@@ -5,5 +5,5 @@ from app.models import Image
 
 
 class ImageForm(FlaskForm):
-    project_id = IntegerField('project_id', validators=[DataRequired()])
+    article_id = IntegerField('article_id', validators=[DataRequired()])
     image_url = StringField('image_url', validators=[DataRequired()])

@@ -74,10 +74,10 @@ def update_article(id):
         specific_article.user_id=form.data['user_id'],
         specific_article.title=form.data['title'],
         specific_article.description=form.data['description'],
-        specific_article.article=form.data['category_id'],
+        specific_article.article=form.data['article'],
 
         db.session.commit()
-        return article.to_dictionary()
+        return specific_article.to_dictionary()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
