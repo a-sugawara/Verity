@@ -12,6 +12,11 @@ import { getAllArticles } from './store/articles';
 import AllArticles from './components/AllArticles';
 import ArticleForm from './components/ArticleForm'
 import OneArticle from './components/OneArticle';
+import Splash from './components/Splash'
+import Japan from './components/Splash/japan'
+import Example from './components/Splash/Example'
+import Animation2 from './components/Splash/Animation2';
+import CallToAction from './components/Splash/CallToAction';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -35,7 +40,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+
       <Switch>
         {/* <Route path='/login' exact={true}>
           <LoginForm />
@@ -44,24 +49,34 @@ function App() {
           <SignUpForm />
         </Route> */}
         <Route path='/users' exact={true} >
+        <NavBar />
+          <UsersList/>
+        </Route>
+        <Route path='/users' exact={true} >
+        <NavBar />
           <UsersList/>
         </Route>
         <Route path='/home' exact={true}>
+        <NavBar />
           <AllArticles articles={articles}/>
         </Route>
         <Route path='/' exact={true} >
-          <AllArticles articles={articles}/>
+          <Splash/>
+          <Japan/>
+          <Animation2/>
+          <Example />
+          <CallToAction/>
         </Route>
         <Route path='/articles/:id' exact={true} >
+        <NavBar />
           <OneArticle/>
         </Route>
         <Route path='/declare' exact={true} >
+        <NavBar />
           <ArticleForm/>
         </Route>
-        <ProtectedRoute path='/declare' exact={true} >
-          form
-        </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
+          <NavBar />
           <User />
         </ProtectedRoute>
       </Switch>

@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import "./forms.css"
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [bool, setBool] = useState(false)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  useEffect(() => {
+    setBool(true)
+  }, [])
 
   const demoLogin = async() => {
     await dispatch(login('demo@aa.io', 'password'));
@@ -32,37 +37,42 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/home' />;
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
+    <form
+      className={`form login-form login-form-${bool}`}
+      >
+
+
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
-      </div>
-      <div>
-        <label htmlFor='email'>Email</label>
+        <div className="form-title">
+          Login
+        </div>
+
         <input
           name='email'
           type='text'
           placeholder='Email'
           value={email}
+          className="input"
           onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor='password'>Password</label>
+          />
+
+
         <input
           name='password'
           type='password'
           placeholder='Password'
           value={password}
+          className="input "
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
-      </div>
+        <div className="navbtn" onClick={onLogin}>Login</div>
+
       <div className="navbtn" onClick={demoLogin}>Demo Login</div>
     </form>
 

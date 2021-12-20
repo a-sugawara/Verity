@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import "./forms.css"
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -9,8 +10,13 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [bool, setBool] = useState(false)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  useEffect(() => {
+    setBool(true)
+  }, [])
+
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -43,50 +49,59 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
+    <form
+      className={`form sign-form sign-form-${bool}`}
+      onSubmit={onSignUp}>
+
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
-      </div>
-      <div>
-        <label>User Name</label>
+
+        <div className="form-title">
+          Sign Up
+        </div>
+
         <input
+          placeholder='User Name'
           type='text'
           name='username'
           onChange={updateUsername}
+          className="input"
           value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
+          ></input>
+
+
         <input
+          placeholder='Email'
           type='text'
           name='email'
           onChange={updateEmail}
+          className="input"
           value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
+          ></input>
+
+
         <input
+          placeholder='Password'
           type='password'
           name='password'
           onChange={updatePassword}
           value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
+          className="input"
+          ></input>
+
+
         <input
+          placeholder='Repeat Password'
           type='password'
           name='repeat_password'
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
-        ></input>
-      </div>
-      <button type='submit'>Sign Up</button>
+          className="input"
+          ></input>
+
+      <div className="navbtn" type='submit'>Sign Up</div>
     </form>
   );
 };

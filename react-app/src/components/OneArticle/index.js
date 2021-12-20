@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import{ NavLink, useParams } from 'react-router-dom'
 import './OneArticle.css'
-import { getOneArticle, addRating } from "../../store/articles";
+import { getOneArticle, addRating,putRating } from "../../store/articles";
 import ArticleEditModal from "../ArticleEditModal"
 import ArticleDeleteModal from "../DeleteArticleModal";
 
@@ -13,6 +13,36 @@ export default function OneArticle(){
     const {id} = useParams()
 
 
+    let userRating
+    let checkedRating = article?.ratings.find(rating => rating.user_id === sessionUser?.id)
+    console.log("77777777777777777777",checkedRating?.rating)
+
+    let userButtons
+    if(sessionUser?.id === article?.user_id){
+        userButtons =  <div className="navbtn-holder-col">
+        <ArticleEditModal />
+        <ArticleDeleteModal />
+    </div>
+    }
+    if(checkedRating){
+        if(checkedRating.rating ===1) userRating='Your previous selection was "false"'
+        if(checkedRating.rating ===50) userRating='Your previous selection was "maybe"'
+        if(checkedRating.rating ===100) userRating='Your previous selection was "true"'
+    }
+
+    let selection
+    if(rate === 1){
+        selection ="You have selected False"
+    }else if(rate===50){
+        selection = "You have selected Maybe"
+    }else if(rate=== 100){
+        selection = "You have selected True"
+    }else if(rate=== "no selection"){
+        selection = "You have not selected a degree of verity"
+    }
+
+
+
     let dispatch = useDispatch()
     useEffect(() => {
         dispatch(getOneArticle(id))
@@ -20,102 +50,152 @@ export default function OneArticle(){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // const errorsArr = validator()
-        // if(errorsArr.length) {
-        //     setErrors(errorsArr)
-        // } else{
-        //     const projectInfo = {
-        //         user_id:sessionUser.id,
-        //         title,
-        //         description,
-        //         article
-        //     }
-        //     const data = await dispatch(postArticle(projectInfo))
-        //     if(data) {
-        //         setErrors(data)
-        //     } else {
-        //         history.push('/home')
-        //     }
+        if(!rate){
+            setRate("no selection")
+            return
+
+        }
+
         const rating = {
-            user_id:sessionUser.id,
-            article_id:+id,
-            rating:+rate
-        }
-        dispatch(addRating(rating))
-        }
+            user_id:sessionUser?.id,
+                article_id:+id,
+                rating:+rate
+            }
+            if(checkedRating){
+                dispatch(putRating(rating, checkedRating.id,checkedRating.rating))
+                console.log(checkedRating.rating,'already rated')
+                setRate('')
+                return
+            }
+            dispatch(addRating(rating))
+            setRate('')
+    }
+                        const falser = () =>{
+                            setRate(1)
+                        }
+                        const mayber = () =>{
+                            setRate(50)
+                        }
+                        const truther = () =>{
+                            setRate(100)
+                        }
 
 
-    const rating = article?.ratings.find(rating => rating.user_id === sessionUser.id)
-    const averageRating = (article?.ratings.reduce((acc, a)=>acc+a.rating,0))/(article?.ratings.length) || 0
-    console.log(averageRating,"8888888888888888888888888888")
+                        const rating = article?.ratings.find(rating => rating.user_id === sessionUser?.id)
+                        const averageRating = (article?.ratings.reduce((acc, a)=>acc+a.rating,0))/(article?.ratings.length) || 0
 
 
-    return<div className="cards-container">
+
+                        return<div className="cards-container">
     <div className={`article-card-container`}>
-        <div>
-    <div className={`article-card`}>
-        <div className="img-description">
-            <div className="img-holder">
-                <img
-                    src="https://cdn.discordapp.com/attachments/920285009099751524/921089742756532284/unknown.png"
-                    className="card-img" />
-            </div>
-            <div className="card-description">
-            <div className="article-description">
-                <a target="_blank" href={article?.description}>Source</a>
-            </div>
-            Posted by: {article?.username}<br/>{averageRating}% accuracy rating
-            </div>
-        </div>
-        <div className="card-info">
-            <div className="card-title">
-                {article?.title}
-            </div>
-            <div className="card-article">
-                {article?.article}
-                <br/>
-                <p></p>
-                <p></p>
-            </div>
-        </div>
-    {/* </div>
-    <div className="cards-container">
-        <div className={`article-card-container`}>
-            <div className={`article-card`}>
-                <div className="article-title-bar">
-                    <div className="article-title">{article?.title.toUpperCase()}</div>
+        <div className="center-column">
+        <div className='bg1'></div>
+        <div className={`article-card`}>
+            <div className="img-description">
+                <div className="img-holder">
+                    <img
+                        src={article?.images[0]||"https://cdn.discordapp.com/attachments/920285009099751524/921089742756532284/unknown.png"}
+                        className="card-img" />
                 </div>
-                <div className="article">
-                    <div className="article-text">
-                        {article?.article}
-                    </div>
-                    <div className="article-description">
-                        <a target="_blank" href={article?.description}>Source</a>
-                    </div>
-                    <div className="article-details">
-                        Posted by: {article?.username} - {averageRating}% accuracy rating
-                    </div>
+                <div className="card-description">
+                <div className="navbtn">
+                    <a target="_blank" href={article?.description}>Source</a>
+                </div>
+                Posted by: {article?.username}<br/>{averageRating}% accuracy rating
                 </div>
             </div>
+            <div className="card-info">
+                <div className="card-title">
+                    {article?.title}
+                </div>
+                <div className="card-article">
+                    {article?.article}
+                    <br/>
+                    <br/>
+                    <br/>
+                    {userButtons}
+                    <br/>
+                    <br/>
+                    {averageRating>75? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/921974219733082173/Verified.png"/>:null}
+                    {averageRating>0 && averageRating<50? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/922093439854731274/UnVerifiedlogo.png"/>:null}
+                    <br/>
+                    {averageRating>75? <span className='weak-grey'>This has been deemed an article of truth</span>:null}
+                    {averageRating>0 && averageRating<50? <span className="weak-grey">This has been deemed an article of untruth</span>:null}
+
+                </div>
+            </div>
+        {/* </div>
+        <div className="cards-container">
+            <div className={`article-card-container`}>
+                <div className={`article-card`}>
+                    <div className="article-title-bar">
+                        <div className="article-title">{article?.title.toUpperCase()}</div>
+                    </div>
+                    <div className="article">
+                        <div className="article-text">
+                            {article?.article}
+                        </div>
+                        <div className="article-description">
+                            <a target="_blank" href={article?.description}>Source</a>
+                        </div>
+                        <div className="article-details">
+                            Posted by: {article?.username} - {averageRating}% accuracy rating
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        <div className="navbtn-holder-col">
+                        <ArticleEditModal />
+                        <div className="navbtn">Delete</div>
+                    </div> */}
         </div>
-        <div className="navbtn-holder-col">
-            <ArticleEditModal />
-            <div className="navbtn">Delete</div>
-        </div> */}
-    </div>
-        <input
-        required
-        placeholder="Accuracy Rating"
-        value={rate}
-        onChange={(e) =>setRate(e.target.value)}
-        />
-        <button onClick={handleSubmit}>Rate</button>
-           <div className="navbtn-holder-col">
-            <ArticleEditModal />
-            <ArticleDeleteModal />
+        <div className="btnbox-white">
+            <div
+                className="btn btn-red">
+                    <div className="fals"
+                        onClick={falser}
+                        >
+                        False
+                    </div>
+
+                </div>
+            <div
+                className="btn btn-yellow">
+                    <div className="mayb"
+                        onClick={mayber}
+                        >
+                        Maybe
+                    </div>
+                </div>
+            <div
+                className="btn btn-green">
+                    <div className="truth"
+                        onClick={truther}
+                        >
+                        True
+                    </div>
+                </div>
         </div>
-    </div>
-    </div>
+        {rate?`${selection}`:"Please select degree of verity"}
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        {userRating}
+            <input
+            hidden
+            required
+            placeholder="Accuracy Rating"
+            value={rate}
+            onChange={(e) =>setRate(e.target.value)}
+            />
+            {rate?<div
+                style={{"margin" : "1rem"}}
+                className="navbtn"
+                onClick={handleSubmit}>Rate</div>:null}
+
+        </div>
+        </div>
     </div>
 
 }

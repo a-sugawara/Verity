@@ -19,7 +19,7 @@ const NavBar = () => {
           Declare
         </div>
       </NavLink>
-    navbuttons =<div>
+    navbuttons =<div className="navbtn-holder">
      <LogoutButton />
       </div>
   }else {

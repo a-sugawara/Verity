@@ -43,12 +43,12 @@ def post_article():
         db.session.add(article)
         db.session.commit()
 
-        # image = Image(
-        #     image = form.data['image_url'],
-        #     article_id = article.id
-        # )
-        # db.session.add(image)
-        # db.session.commit()
+        image = Image(
+            image = form.data['image_url'],
+            article_id = article.id
+        )
+        db.session.add(image)
+        db.session.commit()
         return article.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
@@ -83,5 +83,5 @@ def update_article(id):
 
 @article_routes.route('/discover/<string:term>')
 def search_article(term):
-    articles = Article.query.filter(Article.title.ilike("%" + term + "%"))
+    articles = Article.query.filter(Article.article.ilike("%" + term + "%"))
     return {'articles': [article.to_dict() for article in articles]}

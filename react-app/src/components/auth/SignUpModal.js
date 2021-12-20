@@ -9,7 +9,7 @@ function SignUpModal(){
 
 
     return (
-        <div>
+        <div className="navbtn-holder">
         <>
             <div className="navbtn" onClick={() => setShowModal(true)}>Sign Up</div>
             {showModal && (
