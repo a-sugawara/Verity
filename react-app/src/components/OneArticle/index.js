@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import{ NavLink, useParams } from 'react-router-dom'
+import{ NavLink, useParams,useHistory } from 'react-router-dom'
 import './OneArticle.css'
 import { getOneArticle, addRating,putRating } from "../../store/articles";
 import ArticleEditModal from "../ArticleEditModal"
@@ -8,14 +8,18 @@ import ArticleDeleteModal from "../DeleteArticleModal";
 
 export default function OneArticle(){
     const [rate,setRate] = useState('')
+    const history = useHistory()
     const sessionUser = useSelector(state => state.session.user)
     const {currentArticle: article} = useSelector(state => state.articles)
     const {id} = useParams()
 
+    if(!sessionUser){
+        history.push('/')
+    }
 
     let userRating
     let checkedRating = article?.ratings.find(rating => rating.user_id === sessionUser?.id)
-    console.log("77777777777777777777",checkedRating?.rating)
+
 
     let userButtons
     if(sessionUser?.id === article?.user_id){
@@ -63,7 +67,7 @@ export default function OneArticle(){
             }
             if(checkedRating){
                 dispatch(putRating(rating, checkedRating.id,checkedRating.rating))
-                console.log(checkedRating.rating,'already rated')
+
                 setRate('')
                 return
             }
@@ -113,7 +117,7 @@ export default function OneArticle(){
                     <br/>
                     <br/>
                     <br/>
-                    {userButtons}
+                    {article?.user_id === sessionUser?.id?userButtons:null}
                     <br/>
                     <br/>
                     {averageRating>75? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/921974219733082173/Verified.png"/>:null}
@@ -152,7 +156,7 @@ export default function OneArticle(){
         <div className="btnbox-white">
             <div
                 className="btn btn-red">
-                    <div className="fals"
+                    <div className="fals-grey"
                         onClick={falser}
                         >
                         False
@@ -161,7 +165,7 @@ export default function OneArticle(){
                 </div>
             <div
                 className="btn btn-yellow">
-                    <div className="mayb"
+                    <div className="mayb-grey"
                         onClick={mayber}
                         >
                         Maybe
@@ -169,7 +173,7 @@ export default function OneArticle(){
                 </div>
             <div
                 className="btn btn-green">
-                    <div className="truth"
+                    <div className="truth-grey"
                         onClick={truther}
                         >
                         True

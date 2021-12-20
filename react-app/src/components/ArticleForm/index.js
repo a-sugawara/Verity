@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {useHistory} from 'react-router-dom'
 import {postArticle} from "../../store/articles"
+import './ArticleForm.css'
 
 const ArticleForm = () =>{
     const dispatch = useDispatch()
@@ -60,7 +61,7 @@ const ArticleForm = () =>{
         }
     }
 
-    return <div>
+    return <div className='form-page'>
         <form className='project-form' >
             <div className="errors">
                 {errors.map((error, ind) => (

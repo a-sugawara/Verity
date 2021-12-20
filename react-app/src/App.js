@@ -64,6 +64,7 @@ function App() {
           <Splash/>
           <Japan/>
           <Animation2/>
+          <div className="white-bar"></div>
           <Example />
           <CallToAction/>
         </Route>
