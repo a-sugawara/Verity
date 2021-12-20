@@ -14,7 +14,7 @@
 }
 .card-img{
     width:100%;
-    height:auto;
+    aspect-ratio: 16/9;
     transform: translateY(-15%);
     box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.253) ;
     transition: all 0.8s linear;
@@ -55,4 +55,11 @@
     width: 100%;
     margin-bottom: 1rem;
     margin-left: 1rem;
+}
+.verified-img{
+    height: 3rem;
+    width:auto;
+}
+.weak-grey{
+    color:gray;
 }

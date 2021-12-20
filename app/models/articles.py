@@ -28,8 +28,8 @@ class Article(db.Model):
 
             'ratings': {"sum":sum([obj.rating for obj in self.rating]), "len":len([obj.rating for obj in self.rating])},
 
-            'comments': len([obj.comment for obj in self.comment])
-            # 'image': self.image.to_dict(),
+            'comments': len([obj.comment for obj in self.comment]),
+            'images': [obj.image for obj in self.image]
             # 'tag': self.tag.to_dict(),
 
             }
@@ -55,7 +55,7 @@ class Article(db.Model):
                 "article_id":obj.article_id,
                 "user_id":obj.user_id,
                 "comment":obj.comment} for obj in self.comment],
-            # 'image': self.image.to_dict(),
             # 'tag': self.tag.to_dict(),
+            "images": [obj.image for obj in self.image]
 
             }

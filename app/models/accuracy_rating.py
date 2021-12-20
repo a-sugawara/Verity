@@ -17,5 +17,4 @@ class AccuracyRating(db.Model):
             'user_id':self.user_id,
             'article_id': self.article_id,
             'rating': self.rating,
-
         }

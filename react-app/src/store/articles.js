@@ -5,6 +5,7 @@ const ADD_ARTICLE = 'article/ADD_ARTICLE';
 const EDIT_ARTICLE = 'article/EDIT_ARTICLE';
 const DELETE_ARTICLE = 'article/DELETE_ARTICLE';
 const ADD_RATING = 'rating/ADD_RATING';
+const EDIT_RATING = 'rating/EDIT_RATING';
 
 const setArticles = (payload) => ({
   type: SET_ARTICLES,
@@ -31,6 +32,11 @@ const removeArticle = (payload) => ({
 const addNewRating = (payload) => ({
   type:ADD_RATING,
   payload
+})
+const editRating = (payload, oldRating) => ({
+  type:EDIT_RATING,
+  payload,
+  oldRating
 })
 
 
@@ -140,7 +146,7 @@ export const deleteArticle = (id) => async (dispatch) => {
 
 }
 export const addRating = (rating) => async (dispatch) => {
-  console.log(rating)
+
   const response = await fetch(`/api/ratings/`, {
     method: 'POST',
     headers: {
@@ -154,6 +160,32 @@ export const addRating = (rating) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(addNewRating(data))
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ['An error occurred. Please try again.']
+  }
+
+}
+export const putRating = (rating,id,oldRating) => async (dispatch) => {
+
+  const response = await fetch(`/api/ratings/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(
+      rating
+    )
+  })
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(editRating(data,oldRating))
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -196,18 +228,29 @@ export default function reducer(state = initialState, action) {
     case DELETE_ARTICLE:
       newState = { ...state}
       const articleDelidx = newState.articles.findIndex(article => article.id === +action.payload);
-      console.log(articleDelidx,action.payload)
+
       newState.articles = newState.articles.splice(articleDelidx, 1)
       newState.articles = newState.articles.slice()
       newState.currentArticle = null
       return newState
     case ADD_RATING:
       newState = { ...state}
-      console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",action.payload)
+
       const reviewidx = newState.articles.findIndex(article => article.id === +action.payload.article_id);
       newState.articles[reviewidx].ratings.sum += action.payload.rating
       newState.articles[reviewidx].ratings.len += 1
       newState.currentArticle.ratings.push(action.payload)
+
+      return newState
+    case EDIT_RATING:
+      newState = { ...state}
+
+      const previewidx = newState.articles.findIndex(article => article.id === +action.payload.article_id);
+      const Sreviewidx = newState.currentArticle.ratings.findIndex(rating => rating.id === +action.payload.id);
+      newState.articles[previewidx].ratings.sum += action.payload.rating
+      newState.articles[previewidx].ratings.sum -= action.oldRating
+      console.log(action.oldRating,"YYYYYYYYYYYYYYYYYYYYYY")
+      newState.currentArticle.ratings[Sreviewidx] = action.payload
 
       return newState
     default:

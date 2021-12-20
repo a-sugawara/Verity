@@ -1,0 +1,348 @@
+.splash-container{
+    display: flex;
+    height: 70vh;
+    width: 100vw;
+    justify-content:center;
+    align-items: center;
+    background-color:rgb(255, 245, 233)
+}
+.splash-container-white{
+    display: flex;
+    height: 70vh;
+    width: 100vw;
+    justify-content:center;
+    align-items: center;
+    background-color:#f6f6f6;
+}
+.splash-container-example{
+    display: flex;
+    height: 50vh;
+    width: 100vw;
+    justify-content:center;
+    align-items: center;
+    background-color:#f6f6f6;
+}
+.splash-card1{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height: 50%;
+    width: 50%;
+    background-color:white;
+
+}
+.splash-cardright{
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    align-items:center;
+    height: 50%;
+    width: 40%;
+    background-color:white;
+    font-size:1.5rem;
+    gap:2rem;
+    margin:2rem ;
+}
+.splash-card-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height: 100%;
+    width: 100%;
+    background-color:white;
+    /* box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253); */
+    gap:5rem;
+
+}
+.inner-card{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height: 25rem;
+    width:40rem;
+    background-image: url(https://cdn.discordapp.com/attachments/920285009099751524/921554143267672064/pagoda-layer.png);
+    /* box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition:all 1s ease-in-out;
+    transform:translate(0%, 0%)
+}
+.inner-card-first{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height: 25rem;
+    width:40rem;
+    background-image: url(https://cdn.discordapp.com/attachments/920285009099751524/921554143267672064/pagoda-layer.png);
+    /* box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition:all 1s ease-in-out;
+    transform:translate(0%, 0%)
+}
+.splash-card-container:hover .inner-card{
+
+    transform:translate(0%, -100%)
+}
+.splash-card2{
+    height: 17.5rem;
+    width:28rem;
+
+}
+.splash-card3{
+    height: 12.25rem;
+    width:19.6rem;
+
+}
+.splash-card4{
+    height: 8.57rem;
+    width:13.78rem;
+
+}
+.splash-card5{
+    height: 6.0rem;
+    width:9.6rem;
+
+}
+.splash-card6{
+    height: 4.76rem;
+    width:6.72rem;
+}
+
+.sun{
+    height:5px;
+    width: 5px;
+    background-color: red;
+    border-radius: 50%;
+    transform:scale(40) translate(-800%, -200%);
+    transition: all 1s ease-in-out;
+
+}
+
+.splash-card-container:hover .inner-card-first + .sun{
+
+    border-radius: 50%;
+    transform:scale(40) translate(30%, -200%);
+}
+
+.animation-container{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height:100%;
+    width:100%;
+    background-color:#7F91B2;
+}
+
+.splash-cardleft{
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    align-items:center;
+    height: 50%;
+    width: 40%;
+    background-color:#7F91B2;
+    font-size:1.5rem;
+    gap:2rem;
+    margin:2rem ;
+}
+.splash-card1-2{
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    height: 50%;
+    width: 50%;
+    background-color:#7F91B2;
+}
+.mushroom-container{
+    display: flex;
+    justify-content:baseline;
+    flex-direction:column;
+    align-items:center;
+}
+.mushroom-top{
+    background:url(https://cdn.discordapp.com/attachments/920285009099751524/921681458110795796/mushroom-top.png);
+    height: 12rem;
+    width:21rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transform: scale(0.5) translate(0%,-50%);
+    transition:all 1s ease-in-out;
+}
+.mushroom-bottom{
+    background: url(https://cdn.discordapp.com/attachments/920285009099751524/921681458307936256/mushroom-bottom.png);
+    height: 11rem;
+    width:10rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transform: scale(0.5) translate(0%,250%);
+    transition:all 1s ease-in-out;
+}
+.mushroom-container:hover > .mushroom-top{
+    transform: scale(1.5) translate(0%,-250%);
+
+}
+.mushroom-container:hover > .mushroom-bottom{
+
+    transform: scale(1)  scaleX(0.7) scaleY(5.7) translate(0%,5%) ;
+}
+.animation-container:hover .splash-card1-2> .mushroom-container >.mushroom-top{
+    transform: scale(1.5) translate(0%,-250%);
+}
+.animation-container:hover .splash-card1-2 > .mushroom-container >.mushroom-bottom{
+    transform: scale(1)  scaleX(0.7) scaleY(5.7) translate(0%,5%) ;
+}
+.animation-container:hover .splash-card1-2 > .shorter-mushroom >.mushroom-top{
+    transform: scale(1.5) translate(0%,-150%); ;
+}
+.animation-container:hover .splash-card1-2 > .shorter-mushroom >.mushroom-bottom{
+    transform: scale(1)  scaleX(1) scaleY(4.7) translate(0%,35%) ;
+}
+
+.truth-animation{
+    height: 100%;
+    width:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding-bottom: 40vh; */
+}
+.rater-holder{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width:50%;
+
+}
+.bar-test{
+    z-index: 10000;
+    width:20%;
+    height:1%;
+    background-color:#7F91B2;
+    transform: rotate(10deg)  ;
+    transform-origin: right center;
+    transition:all 1s ease-in-out;
+}
+.bar-test-false{
+    z-index: 10000;
+    width:20%;
+    height:1%;
+    background-color:#7F91B2;
+    transform: rotate(10deg) ;
+    transform-origin: right center;
+    transition:all 1s ease-in-out;
+}
+.bar-test-maybe{
+    z-index: 10000;
+    width:20%;
+    height:1%;
+    background-color:#7F91B2;
+    transform: rotate(90deg) ;
+    transform-origin: right center;
+    transition:all 1s ease-in-out;
+}
+.bar-test-true{
+    z-index: 10000;
+    width:20%;
+    height:1%;
+    background-color:#7F91B2;
+    transform: rotate(170deg) ;
+    transform-origin: right center;
+    transition:all 1s ease-in-out;
+}
+.left-meter{
+
+    height: 10vw;
+    width: 20vw;
+    border-top-left-radius: 400%;
+    border-top-right-radius: 400%;
+    border-left: 20px solid black;
+    border-right: 20px solid black;
+    border-top: 20px solid black;
+    border-bottom: 20px solid black;
+    background: linear-gradient(90deg, rgba(232,66,88,1) 25%, rgba(254,225,145,1) 50%, rgba(176,216,164,1) 75%);
+    transform:translate(-50%,-50%)
+}
+.right-meter{
+    height: 10vw;
+    width: 10vw;
+    border-bottom: 20px solid #f6f6f6;
+    border-right: 20px solid #f6f6f6;
+    border-top: 20px solid #f6f6f6;
+    border-top-right-radius: 100%;
+    background: linear-gradient(90deg, rgba(232,66,88,1) 0%, rgba(254,225,145,1) 0%, rgba(176,216,164,1) 75%);
+
+}.isTrue-false{
+    width: 100%;
+    height:10vh;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    font-size:3rem;
+    font-weight: 500;
+    color: white;
+    background-color: rgba(232,66,88,1);
+}
+.isTrue-maybe{
+    width: 100%;
+    height:10vh;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    font-size:3rem;
+    font-weight: 500;
+    background-color:rgba(254,225,145,1);
+}
+.isTrue-true{
+    width: 100%;
+    height:10vh;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    font-size:3rem;
+    font-weight: 500;
+    color: white;
+    background: rgba(176,216,164,1);
+}
+.meter-card{
+    display: flex;
+    justify-content:center;
+    background-color: black;
+    color: white;
+    height:1rem;
+    width:5vw;
+    font-size: calc((2vh+2vw)/2);
+    font-weight: 500;
+    padding:.34vw;
+    transform: scale(3.8) translate(59.75%,45%)
+}
+.navbtn-holder-large{
+    display: flex;
+    gap: 1rem;
+    margin:1rem;
+    transform: scale(1.5)
+}
+@media only screen and (max-width: 1300px) {
+    .splash-card1-2{
+      flex-direction:column;
+    }
+    .meter-card{
+        font-size: 0.2rem
+    }
+  }
+@media only screen and (max-width: 1870px) {
+
+    .meter-card{
+        font-size: 0.5rem
+    }
+  }

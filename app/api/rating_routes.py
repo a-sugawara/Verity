@@ -56,6 +56,6 @@ def update_rating(id):
         specific_rating.article_id=form.data['article_id'],
 
         db.session.commit()
-        return specific_article.to_dictionary()
+        return specific_rating.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
