@@ -146,9 +146,9 @@ export default function AllArticles(){
                 <div className="carbtn" onClick={prevArticle}>{'<'}</div>
                     {articles &&
                         <>
-                            <MemoArticle article={article} idx={artIdx} direction={direction} bool={bool} zIndex={100} parent={true} />
+                            <MemoArticle article={article} idx={artIdx} direction={direction} bool={bool} zIndex={0} parent={true} />
                             { behindArticle &&
-                                <MemoArticle article={behindArticle} idx={artIdx-1} bool={bool} zIndex={showBehindArticleForward ? 1000 : 0} parent={false} />
+                                <MemoArticle article={behindArticle} idx={artIdx-1} bool={bool} zIndex={showBehindArticleForward ? 1000 : -1} parent={false} />
                             }
                         </>
                     }
@@ -162,11 +162,10 @@ export default function AllArticles(){
 }
 
 const Article = ({ article, idx, bool, zIndex, parent, direction='a' }) => {
-    console.log('render Article: parent?:', parent, ', direction?:', direction, ', date:', new Date().getMilliseconds())
     return (
     <div key={idx} className={parent ? `article-card-container` : `article-card-container-next`} style={{ zIndex, position: parent ? 'relative' : 'absolute' }}>
 
-        <div className={`article-card test-${direction} article-card-${bool} `}>
+        <div className={`article-card test-${direction} article-card-${bool} article-card-${direction} `}>
             <div className="img-description">
                 <div className="img-holder">
                     <img

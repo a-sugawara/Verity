@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {useHistory,useParams} from 'react-router-dom'
 import {editArticle} from "../../store/articles"
@@ -11,8 +11,13 @@ const ArticleEditForm = () =>{
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [article, setArticle] = useState('')
+    const [bool, setBool]= useState(false)
     const [errors, setErrors] = useState([])
 
+
+    useEffect(() => {
+        setBool(true)
+    },[])
 
     const validator = () => {
         let error = []
@@ -57,34 +62,34 @@ const ArticleEditForm = () =>{
         }
     }
 
-    return <div>
+    return<form className={`article-edit-form-${bool}`} onSubmit={handleSubmit}>
         <div className="errors">
                     {errors.map((error, ind) => (
                     <div key={ind}>{error.split(':')[1]}</div>
                 ))}
                 </div>
-        <form className='article-form' onSubmit={handleSubmit}>
+                <div className="form-title">Edit Article</div>
                     <input
-                    className='article-title-input'
+                    className='article-title-input input'
                     placeholder='Title'
                     required
                     value = {title}
                     onChange= {(e) => setTitle(e.target.value)}/>
                     <input
-                    className='article-description-input'
+                    className='article-description-input input'
                     placeholder='Source'
                     required
                     value={description}
                     onChange= {(e) => setDescription(e.target.value)}/>
                     <input
-                    className='article-input'
+                    className='article-input input'
                     placeholder='Factoid'
                     required
                     value = {article}
                     onChange= {(e) => setArticle(e.target.value)}/>
                     <button type='submit'
                         className="article-submit-button">Submit</button>
-                </form>
-    </div>
+    </form>
+
 }
 export default ArticleEditForm;

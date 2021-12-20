@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import "./forms.css"
 
@@ -12,6 +12,7 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const [bool, setBool] = useState(false)
   const user = useSelector(state => state.session.user);
+  const history = useHistory()
   const dispatch = useDispatch();
   useEffect(() => {
     setBool(true)
@@ -20,6 +21,7 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    console.log("here")
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
@@ -45,13 +47,12 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/home' />;
   }
 
   return (
     <form
-      className={`form sign-form sign-form-${bool}`}
-      onSubmit={onSignUp}>
+      className={`form sign-form sign-form-${bool}`}>
 
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
@@ -101,7 +102,7 @@ const SignUpForm = () => {
           className="input"
           ></input>
 
-      <div className="navbtn" type='submit'>Sign Up</div>
+      <div className="navbtn" onClick={onSignUp}>Sign Up</div>
     </form>
   );
 };
