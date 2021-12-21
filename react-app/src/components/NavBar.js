@@ -12,18 +12,13 @@ const NavBar = () => {
   const history = useHistory()
   const sessionUser = useSelector(state => state.session.user);
   let navbuttons
-  let articlebutton
+
   if (sessionUser) {
-    articlebutton= <NavLink to = "/declare">
-        <div className="navbtn">
-          Declare
-        </div>
-      </NavLink>
+
     navbuttons =<div className="navbtn-holder">
      <LogoutButton />
       </div>
   }else {
-    articlebutton=null
     navbuttons =<div className="navbtn-holder">
         <LoginModal/>
         <SignUpModal/>
@@ -31,7 +26,7 @@ const NavBar = () => {
   }
 
   const toHome = () => {
-    history.push('/')
+    history.push('/home')
   }
 
   return (
@@ -41,7 +36,6 @@ const NavBar = () => {
         onClick={()=> toHome()}
         className="logo-img" src={"https://cdn.discordapp.com/attachments/920285009099751524/920786815022149652/logov1.png"}/>
 
-      {articlebutton}
       <div></div>
       {/* <SearchForm/> */}
       {navbuttons}

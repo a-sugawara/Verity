@@ -71,9 +71,9 @@ const LoginForm = () => {
           className="input "
           onChange={updatePassword}
         />
-        <div className="navbtn" onClick={onLogin}>Login</div>
+        <div className="modalbtn" onClick={onLogin}>Login</div>
 
-      <div className="navbtn" onClick={demoLogin}>Demo Login</div>
+      <div className="modalbtn" onClick={demoLogin}>Demo Login</div>
     </form>
 
   );

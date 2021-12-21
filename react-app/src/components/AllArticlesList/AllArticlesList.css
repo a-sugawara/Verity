@@ -1,0 +1,36 @@
+.list-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+.list-card-container{
+    display: flex;
+    /* flex-direction: column; */
+    width: 80%;
+    align-items: center;
+    justify-content:space-between;
+    margin: 2rem;
+    border-bottom: 1px solid black;
+    padding-bottom: 1rem;
+}
+.list-title{
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    height:100%;
+    width: 20%
+}
+.v-score{
+    width: 15%;
+}
+.titlebtn{
+    background-color:#B2A391 ;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.5rem;
+    border-radius: 3px;
+
+}
+.titlebtn:hover{
+    cursor: pointer;
+}

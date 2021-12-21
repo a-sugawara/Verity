@@ -6,6 +6,7 @@ import './AllArticles.css'
 import './AllArticlesRevision.css'
 
 export default function AllArticles(){
+    const user = useSelector(state => state.session.user)
     const {articles:articles} = useSelector(state => state.articles)
     const [artIdx, setArtIdx] = useState(0)
     const [direction, setDirection] = useState('a')
@@ -141,7 +142,8 @@ export default function AllArticles(){
     //         </div>
     //     </div>
     //     )
-        return (
+        return (<div className="all-articles-page">
+
             <div className="cards-container">
                 <div className="carbtn" onClick={prevArticle}>{'<'}</div>
                     {articles &&
@@ -154,6 +156,11 @@ export default function AllArticles(){
                     }
                 <div className="carbtn" onClick={nextArticle}>{'>'}</div>
             </div>
+            <div className="pagebtns">{user? <NavLink to={`/declare`}><div className="declarebtn">Declare a Truth</div></NavLink>:null}
+                <NavLink to={`/all`}><div className="declarebtn">See All Claims</div></NavLink>
+                <NavLink to={`/search`}><div className="declarebtn">Search</div></NavLink>
+            </div>
+        </div>
         )
     }
 
@@ -173,7 +180,7 @@ const Article = ({ article, idx, bool, zIndex, parent, direction='a' }) => {
                         className="card-img" />
                 </div>
                 <div className="card-description">
-                    <div className="navbtn">
+                    <div className="cardbtn">
                         <a target="_blank" href={article.description}>Source</a>
                      </div>
                      Posted by: {article.username}<br/>{article.ratings.len >0?article.ratings.sum/article.ratings.len:0}% accuracy rating<br/> {article.comments} comments
@@ -185,21 +192,20 @@ const Article = ({ article, idx, bool, zIndex, parent, direction='a' }) => {
                 </div>
                 <div className="card-article">
                     {article.article}
-                    <br/>
-                    <p></p>
-                    <p></p>
                     <NavLink to={`/articles/${article.id}`}>
-                        <div className="navbtn">Rate and Comment</div>
+                        <div className="cardbtn">Rate and Comment</div>
                     </NavLink>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    {(article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )>75? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/921974219733082173/Verified.png"/>:null}
-                    {(article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )>0 && (article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )<50? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/922093439854731274/UnVerifiedlogo.png"/>:null}
-                    <br/>
-                    {(article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )>75? <span className='weak-grey'>This has been deemed an article of truth</span>:null}
-                    {(article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )>0 && (article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )<50? <span className='weak-grey'>This has been deemed an article of untruth</span>:null}
+                    <div>
+                        <div>
+                            {(article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )>75? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/921974219733082173/Verified.png"/>:null}
+                            {(article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )>0 && (article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )<50? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/922093439854731274/UnVerifiedlogo.png"/>:null}
+                        </div>
+                        <div>
+                            {(article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )>75? <span className='weak-grey'>This has been deemed an article of truth</span>:null}
+                            {(article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )>0 && (article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )<50? <span className='weak-grey'>This has been deemed an article of untruth</span>:null}
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>

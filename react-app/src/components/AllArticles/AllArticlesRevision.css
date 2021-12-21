@@ -47,6 +47,10 @@
 .card-article{
     height:85%;
     width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction:column;
+    justify-content:space-between;
 }
 .card-description{
     display:flex;

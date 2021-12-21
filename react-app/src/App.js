@@ -17,6 +17,7 @@ import Japan from './components/Splash/japan'
 import Example from './components/Splash/Example'
 import Animation2 from './components/Splash/Animation2';
 import CallToAction from './components/Splash/CallToAction';
+import AllArticlesList from './components/AllArticlesList'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -51,6 +52,10 @@ function App() {
         <Route path='/users' exact={true} >
         <NavBar />
           <UsersList/>
+        </Route>
+        <Route path='/all' exact={true} >
+        <NavBar />
+          <AllArticlesList/>
         </Route>
         <Route path='/users' exact={true} >
         <NavBar />

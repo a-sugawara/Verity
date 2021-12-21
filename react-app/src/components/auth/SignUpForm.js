@@ -102,7 +102,7 @@ const SignUpForm = () => {
           className="input"
           ></input>
 
-      <div className="navbtn" onClick={onSignUp}>Sign Up</div>
+      <div className="modalbtn" onClick={onSignUp}>Sign Up</div>
     </form>
   );
 };

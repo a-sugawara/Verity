@@ -8,7 +8,7 @@ function ArticleEditModal(){
 
     return (
         <div>
-            <div onClick={() => setShowModal(true)} className="navbtn">Edit</div>
+            <div onClick={() => setShowModal(true)} className="cardbtn">Edit</div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <ArticleEditForm setShowModal={setShowModal}/>

@@ -39,7 +39,7 @@ textarea:hover{
     padding: 0.5rem;
     height:5rem;
     /* border-bottom: 1px solid rgba(0, 0, 0, 0.109); */
-    background-color: #7F91B2;
+    background-color: #273040;
     margin-bottom: 1rem;
 }
 
@@ -71,7 +71,45 @@ textarea:hover{
 .navbtn:hover{
     cursor: pointer;
     border-radius:3px;
-    background-color: hsl(203, 60%, 14%);
+    background-color: #273040;
+    border: 1px solid white;
+}
+.modalbtn{
+    /* box-shadow: 10px 10px 3px rgba(0, 0, 0, 0.253) ; */
+    display: flex;
+    justify-content: center;
+    border-radius:3px;
+    background-color: #A6BDCC;
+    padding:0.5rem 1.5rem;
+    font-weight: 700;
+    font-size: 1rem;
+    /* font-size: calc((0.55vw + 1.8vh)/2); */
+    color:white;
+}
+.modalbtn:hover{
+    cursor: pointer;
+    border-radius:3px;
+    background-color: grey;
+    border: 1px solid white;
+}
+.cardbtn{
+    /* box-shadow: 10px 10px 3px rgba(0, 0, 0, 0.253) ; */
+    display: flex;
+    justify-content: center;
+    border-radius:3px;
+    background-color: #A6BDCC;
+    padding:0.5rem 1.5rem;
+    font-weight: 700;
+    font-size: 1rem;
+    /* font-size: calc((0.55vw + 1.8vh)/2); */
+    color:white;
+}
+.cardbtn:hover{
+    cursor: pointer;
+    border-radius:3px;
+    background-color: #27304000;
+    color:black;
+    border: 1px solid black;
 }
 .logo-img{
     margin-left: 1rem;
