@@ -23,6 +23,7 @@
     border-bottom-left-radius: 25px;
     width:50vw;
     height:45vh;
+    box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.253) ;
 
 }
 .article-edit-form-false{

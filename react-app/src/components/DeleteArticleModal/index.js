@@ -8,7 +8,7 @@ function ArticleDeleteModal(){
 
     return (
         <div>
-            <div onClick={() => setShowModal(true)} className="navbtn">Delete</div>
+            <div onClick={() => setShowModal(true)} className="cardbtn">Delete</div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <ArticleDelete setShowModal={setShowModal}/>

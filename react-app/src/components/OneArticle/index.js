@@ -102,7 +102,7 @@ export default function OneArticle(){
                         className="card-img" />
                 </div>
                 <div className="card-description">
-                <div className="navbtn">
+                <div className="cardbtn">
                     <a target="_blank" href={article?.description}>Source</a>
                 </div>
                 Posted by: {article?.username}<br/>{averageRating}% accuracy rating
@@ -118,14 +118,17 @@ export default function OneArticle(){
                     <br/>
                     <br/>
                     {article?.user_id === sessionUser?.id?userButtons:null}
-                    <br/>
-                    <br/>
-                    {averageRating>75? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/921974219733082173/Verified.png"/>:null}
-                    {averageRating>0 && averageRating<50? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/922093439854731274/UnVerifiedlogo.png"/>:null}
-                    <br/>
-                    {averageRating>75? <span className='weak-grey'>This has been deemed an article of truth</span>:null}
-                    {averageRating>0 && averageRating<50? <span className="weak-grey">This has been deemed an article of untruth</span>:null}
+                    <div>
+                        <div>
 
+                            {averageRating>75? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/921974219733082173/Verified.png"/>:null}
+                            {averageRating>0 && averageRating<50? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/922093439854731274/UnVerifiedlogo.png"/>:null}
+                        </div>
+                        <div>
+                            {averageRating>75? <span className='weak-grey'>This has been deemed an article of truth</span>:null}
+                            {averageRating>0 && averageRating<50? <span className="weak-grey">This has been deemed an article of untruth</span>:null}
+                        </div>
+                    </div>
                 </div>
             </div>
         {/* </div>

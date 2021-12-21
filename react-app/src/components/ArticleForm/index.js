@@ -14,7 +14,9 @@ const ArticleForm = () =>{
     const [image_url, setImage] = useState('')
     const [errors, setErrors] = useState([])
 
-
+    if(!sessionUser){
+        history.push('/home')
+    }
     const validator = () => {
         let error = []
 
