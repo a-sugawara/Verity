@@ -74,27 +74,27 @@ export default function OneArticle(){
             dispatch(addRating(rating))
             setRate('')
     }
-                        const falser = () =>{
-                            setRate(1)
-                        }
-                        const mayber = () =>{
-                            setRate(50)
-                        }
-                        const truther = () =>{
-                            setRate(100)
-                        }
+    const falser = () =>{
+        setRate(1)
+    }
+    const mayber = () =>{
+        setRate(50)
+    }
+    const truther = () =>{
+        setRate(100)
+    }
 
 
-                        const rating = article?.ratings.find(rating => rating.user_id === sessionUser?.id)
-                        const averageRating = (article?.ratings.reduce((acc, a)=>acc+a.rating,0))/(article?.ratings.length) || 0
+    const rating = article?.ratings.find(rating => rating.user_id === sessionUser?.id)
+    const averageRating = (article?.ratings.reduce((acc, a)=>acc+a.rating,0))/(article?.ratings.length) || 0
 
 
 
-                        return<div className="cards-container">
+    return <div className="scards-container">
     <div className={`article-card-container`}>
         <div className="center-column">
         <div className='bg1'></div>
-        <div className={`article-card`}>
+        <div className={`article-card article-card-a`}>
             <div className="img-description">
                 <div className="img-holder">
                     <img
@@ -202,6 +202,80 @@ export default function OneArticle(){
                 onClick={handleSubmit}>Rate</div>:null}
 
         </div>
+        </div>
+        <div className="comments-box">
+                <div className="comments-box-title" >TruthFinder3000</div>
+            <div className="screen-holder">
+
+                <div className="screen">
+
+                    {article?.comments.map(comment => <div className="comment">
+                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
+                            <div>Posted by:{comment.username}</div>
+                        </div>)}
+                    {article?.comments.map(comment => <div className="comment">
+                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
+                            <div>Posted by:{comment.username}</div>
+                        </div>)}
+                    {article?.comments.map(comment => <div className="comment">
+                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
+                            <div>Posted by:{comment.username}</div>
+                        </div>)}
+                    {article?.comments.map(comment => <div className="comment">
+                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
+                            <div>Posted by:{comment.username}</div>
+                        </div>)}
+                    {article?.comments.map(comment => <div className="comment">
+                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
+                            <div>Posted by:{comment.username}</div>
+                        </div>)}
+                    {article?.comments.map(comment => <div className="comment">
+                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
+                            <div>Posted by:{comment.username}</div>
+                        </div>)}
+                    {article?.comments.map(comment => <div className="comment">
+                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
+                            <div>Posted by:{comment.username}</div>
+                        </div>)}
+                    {article?.comments.map(comment => <div className="comment">
+                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
+                            <div>Posted by:{comment.username}</div>
+                        </div>)}
+                    {article?.comments.map(comment => <div className="comment">
+                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
+                            <div>Posted by:{comment.username}</div>
+                        </div>)}
+                    {article?.comments.map(comment => <div className="comment">
+                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
+                            <div>Posted by:{comment.username}</div>
+                        </div>)}
+                    {article?.comments.map(comment => <div className="comment">
+                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
+                            <div>Posted by:{comment.username}</div>
+                        </div>)}
+                    {article?.comments.map(comment => <div className="comment">
+                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
+                            <div>Posted by:{comment.username}</div>
+                        </div>)}
+                    {article?.comments.map(comment => <div className="comment">
+                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
+                            <div>Posted by:{comment.username}</div>
+                        </div>)}
+                    {article?.comments.map(comment => <div className="comment">
+                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
+                            <div>Posted by:{comment.username}</div>
+                        </div>)}
+                    {article?.comments.map(comment => <div className="comment">
+                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
+                            <div>Posted by:{comment.username}</div>
+                        </div>)}
+
+                </div>
+                <input
+                    placeholder="Comment here..."
+                    className="screen-input"/>
+            </div>
+            <div className="keyboard"></div>
         </div>
     </div>
 

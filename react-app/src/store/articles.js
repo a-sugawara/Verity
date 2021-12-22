@@ -6,6 +6,9 @@ const EDIT_ARTICLE = 'article/EDIT_ARTICLE';
 const DELETE_ARTICLE = 'article/DELETE_ARTICLE';
 const ADD_RATING = 'rating/ADD_RATING';
 const EDIT_RATING = 'rating/EDIT_RATING';
+const ADD_COMMENT = 'article/ADD_COMMENT';
+const EDIT_COMMENT = 'article/EDIT_COMMENT';
+const DELETE_COMMENT = 'article/DELETE_COMMENT';
 
 const setArticles = (payload) => ({
   type: SET_ARTICLES,
@@ -37,6 +40,18 @@ const editRating = (payload, oldRating) => ({
   type:EDIT_RATING,
   payload,
   oldRating
+})
+const addNewComment = (payload) => ({
+  type: ADD_COMMENT,
+  payload
+})
+const addEditedComment = (payload) => ({
+  type: EDIT_COMMENT,
+  payload
+})
+const removeComment = (payload) => ({
+  type: DELETE_COMMENT,
+  payload
 })
 
 
@@ -197,6 +212,75 @@ export const putRating = (rating,id,oldRating) => async (dispatch) => {
   }
 
 }
+export const postComment = (commentInfo) => async (dispatch) => {
+
+  const response = await fetch(`/api/comments/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(
+      commentInfo
+    )
+  })
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(addNewComment(data))
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ['An error occurred. Please try again.']
+  }
+
+}
+export const editComment = (commentInfo, id) => async (dispatch) => {
+
+  const response = await fetch(`/api/comments/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(
+      commentInfo
+    )
+  })
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(addEditedComment(data))
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ['An error occurred. Please try again.']
+  }
+
+}
+export const deleteComment = (id) => async (dispatch) => {
+
+  const response = await fetch(`/api/comments/${id}`, {
+    method: 'DELETE',
+  })
+  if(response.ok) {
+    dispatch(removeComment(id))
+  } else if (response.status < 500){
+    const data = await response.json()
+    if (data.errors) {
+      return data.errors
+    }
+  } else {
+    return ['An error occurred. Please try again.']
+  }
+
+}
 
 const initialState = { articles:null, currentArticle:null}
 
@@ -228,30 +312,24 @@ export default function reducer(state = initialState, action) {
     case DELETE_ARTICLE:
       newState = { ...state}
       const articleDelidx = newState.articles.findIndex(article => article.id === +action.payload);
-
       newState.articles = newState.articles.splice(articleDelidx, 1)
       newState.articles = newState.articles.slice()
       newState.currentArticle = null
       return newState
     case ADD_RATING:
       newState = { ...state}
-
       const reviewidx = newState.articles.findIndex(article => article.id === +action.payload.article_id);
       newState.articles[reviewidx].ratings.sum += action.payload.rating
       newState.articles[reviewidx].ratings.len += 1
       newState.currentArticle.ratings.push(action.payload)
-
       return newState
     case EDIT_RATING:
       newState = { ...state}
-
       const previewidx = newState.articles.findIndex(article => article.id === +action.payload.article_id);
       const Sreviewidx = newState.currentArticle.ratings.findIndex(rating => rating.id === +action.payload.id);
       newState.articles[previewidx].ratings.sum += action.payload.rating
       newState.articles[previewidx].ratings.sum -= action.oldRating
-      console.log(action.oldRating,"YYYYYYYYYYYYYYYYYYYYYY")
       newState.currentArticle.ratings[Sreviewidx] = action.payload
-
       return newState
     default:
       return state;

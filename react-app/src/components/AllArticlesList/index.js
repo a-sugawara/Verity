@@ -8,10 +8,6 @@ import "./AllArticlesList.css"
 export default function AllArticlesList(){
     const user = useSelector(state => state.session.user)
     const {articles:articles} = useSelector(state => state.articles)
-
-    // let articles = useSelector(state => state.articles.articles)
-
-
     let list
     if (articles?.length > 0){
         list = articles?.sort((a, b) => b.ratings.sum - a.ratings.sum).map((article, idx) =><div key={idx} className={`list-card-container`}>
