@@ -54,7 +54,8 @@ class Article(db.Model):
                 "id": obj.id,
                 "article_id":obj.article_id,
                 "user_id":obj.user_id,
-                "comment":obj.comment} for obj in self.comment],
+                "comment":obj.comment,
+                "username":obj.user.username,} for obj in self.comment],
             # 'tag': self.tag.to_dict(),
             "images": [obj.image for obj in self.image]
 
