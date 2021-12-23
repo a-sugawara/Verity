@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import{ NavLink, useParams,useHistory } from 'react-router-dom'
 import './OneArticle.css'
-import { getOneArticle, addRating,putRating } from "../../store/articles";
+import { getOneArticle, addRating,putRating, postComment, editComment, deleteComment } from "../../store/articles";
+
 import ArticleEditModal from "../ArticleEditModal"
 import ArticleDeleteModal from "../DeleteArticleModal";
 
 export default function OneArticle(){
     const [rate,setRate] = useState('')
+    const [comment, setComment] = useState('')
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user)
     const {currentArticle: article} = useSelector(state => state.articles)
@@ -74,14 +76,28 @@ export default function OneArticle(){
             dispatch(addRating(rating))
             setRate('')
     }
+    const handleCommentSubmit = (e) => {
+        e.preventDefault();
+
+        const commentInfo = {
+            user_id:sessionUser?.id,
+                article_id:+id,
+                comment
+            }
+            dispatch(postComment(commentInfo))
+            setComment('')
+    }
     const falser = () =>{
         setRate(1)
+
     }
     const mayber = () =>{
         setRate(50)
+
     }
     const truther = () =>{
         setRate(100)
+
     }
 
 
@@ -204,78 +220,41 @@ export default function OneArticle(){
         </div>
         </div>
         <div className="comments-box">
-                <div className="comments-box-title" >TruthFinder3000</div>
-            <div className="screen-holder">
-
-                <div className="screen">
-
-                    {article?.comments.map(comment => <div className="comment">
-                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
-                            <div>Posted by:{comment.username}</div>
-                        </div>)}
-                    {article?.comments.map(comment => <div className="comment">
-                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
-                            <div>Posted by:{comment.username}</div>
-                        </div>)}
-                    {article?.comments.map(comment => <div className="comment">
-                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
-                            <div>Posted by:{comment.username}</div>
-                        </div>)}
-                    {article?.comments.map(comment => <div className="comment">
-                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
-                            <div>Posted by:{comment.username}</div>
-                        </div>)}
-                    {article?.comments.map(comment => <div className="comment">
-                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
-                            <div>Posted by:{comment.username}</div>
-                        </div>)}
-                    {article?.comments.map(comment => <div className="comment">
-                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
-                            <div>Posted by:{comment.username}</div>
-                        </div>)}
-                    {article?.comments.map(comment => <div className="comment">
-                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
-                            <div>Posted by:{comment.username}</div>
-                        </div>)}
-                    {article?.comments.map(comment => <div className="comment">
-                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
-                            <div>Posted by:{comment.username}</div>
-                        </div>)}
-                    {article?.comments.map(comment => <div className="comment">
-                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
-                            <div>Posted by:{comment.username}</div>
-                        </div>)}
-                    {article?.comments.map(comment => <div className="comment">
-                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
-                            <div>Posted by:{comment.username}</div>
-                        </div>)}
-                    {article?.comments.map(comment => <div className="comment">
-                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
-                            <div>Posted by:{comment.username}</div>
-                        </div>)}
-                    {article?.comments.map(comment => <div className="comment">
-                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
-                            <div>Posted by:{comment.username}</div>
-                        </div>)}
-                    {article?.comments.map(comment => <div className="comment">
-                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
-                            <div>Posted by:{comment.username}</div>
-                        </div>)}
-                    {article?.comments.map(comment => <div className="comment">
-                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
-                            <div>Posted by:{comment.username}</div>
-                        </div>)}
-                    {article?.comments.map(comment => <div className="comment">
-                            <div>{comment.comment} asd fasd fasdf asdf asdf asdf asdfa sd fasf asdf asfd asf asf asfd asfd asdf asdf asdf asf asdf asdasdf asdf asdf asdf asdf asdfwef aaf h df ahgasdfa fwe asdf ahgadfasdfawg adga sd fasdg a fawdfcomment</div>
-                            <div>Posted by:{comment.username}</div>
-                        </div>)}
-
+                <div className="comments-box-title" >
+                    <div>Comments</div>
+                    <div className="comments-box-circles">
+                        <div className="tinycircle red"></div>
+                        <div className="tinycircle yellow"></div>
+                        <div className="tinycircle green"></div>
+                    </div>
                 </div>
-                <input
-                    placeholder="Comment here..."
-                    className="screen-input"/>
+            <div className="screen-holder">
+                <div className="screen">
+                    {article?.comments.length ===0?<div className="comment">Be the first to spark the discussion!</div>:null}
+                    {article?.comments.map(comment => <div className="comment">
+                            <div>{comment.comment}</div>
+                            <div>
+                                <div>
+                                    {comment.username}
+                                {sessionUser.id === comment.user_id?<div>
+                                    {" "}...
+                                </div>:null}
+                                </div>
+                            </div>
+                        </div>)}
+                </div>
+                <form className="screen-input-holder">
+                    <input
+                        value={comment}
+                        onChange= {(e) => setComment(e.target.value)}
+                        placeholder="Comment here..."
+                        className="screen-input"/>
+                    <div
+                        className="navbtn smaller"
+                        onClick={handleCommentSubmit}>submit</div>
+                </form>
             </div>
-            <div className="keyboard"></div>
+            {/* <div className="keyboard"></div> */}
         </div>
     </div>
 

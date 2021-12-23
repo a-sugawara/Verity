@@ -297,10 +297,6 @@ export default function reducer(state = initialState, action) {
       newState = { ...state}
       newState.articles.push(action.payload)
       return newState
-    case ADD_ARTICLE:
-      newState = { ...state}
-      newState.articles.push(action.payload)
-      return newState
     case EDIT_ARTICLE:
       newState = { ...state}
       const articleidx = newState.articles.findIndex(article => article.id === action.payload.id);
@@ -331,6 +327,12 @@ export default function reducer(state = initialState, action) {
       newState.articles[previewidx].ratings.sum -= action.oldRating
       newState.currentArticle.ratings[Sreviewidx] = action.payload
       return newState
+    case ADD_COMMENT:
+      newState = { ...state}
+      newState.currentArticle.comments.push(action.payload)
+      // newState.currentArticle.comments=newState.currentArticle.comments.slice()
+      return newState
+
     default:
       return state;
   }

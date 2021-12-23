@@ -3,9 +3,9 @@
 #root{
     width: 100%;
 }
+
 *{
     font-family: 'Inconsolata', monospace;
-
 }
 a, a:hover, a:focus, a:active {
     text-decoration: none;
@@ -20,6 +20,17 @@ body{
     width: 100%;
     background-color:#AFB5BF;
     overflow-x: hidden;
+}
+body::-webkit-scrollbar{
+    width: 0.5rem;
+}
+body::-webkit-scrollbar-track{
+    background: rgb(255, 255, 255);
+}
+body::-webkit-scrollbar-thumb{
+    width: 0.5rem;
+    background: #273040;
+    border-radius: 6px;
 }
 input:hover{
     cursor: cell;
@@ -41,6 +52,7 @@ textarea:hover{
     /* border-bottom: 1px solid rgba(0, 0, 0, 0.109); */
     background-color: #273040;
     margin-bottom: 1rem;
+
 }
 
 .navbtn-holder{
@@ -67,6 +79,7 @@ textarea:hover{
     font-size: 1rem;
     /* font-size: calc((0.55vw + 1.8vh)/2); */
     color:white;
+    box-sizing: border-box;
 }
 .navbtn:hover{
     cursor: pointer;
@@ -85,6 +98,7 @@ textarea:hover{
     font-size: 1rem;
     /* font-size: calc((0.55vw + 1.8vh)/2); */
     color:white;
+
 }
 .modalbtn:hover{
     cursor: pointer;
@@ -103,6 +117,8 @@ textarea:hover{
     font-size: 1rem;
     /* font-size: calc((0.55vw + 1.8vh)/2); */
     color:white;
+    border: 1px solid white;
+
 }
 .cardbtn:hover{
     cursor: pointer;
