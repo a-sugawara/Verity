@@ -330,9 +330,14 @@ export default function reducer(state = initialState, action) {
     case ADD_COMMENT:
       newState = { ...state}
       newState.currentArticle.comments.push(action.payload)
-      // newState.currentArticle.comments=newState.currentArticle.comments.slice()
       return newState
-
+    case DELETE_COMMENT:
+      newState = { ...state}
+      console.log(action.payload)
+      const delComIdx = newState.currentArticle.comments.findIndex(comment => comment.id === action.payload)
+      console.log(delComIdx)
+      newState.currentArticle.comments.splice(delComIdx, 1)
+      return newState
     default:
       return state;
   }
