@@ -10,6 +10,8 @@ import ArticleDeleteModal from "../DeleteArticleModal";
 export default function OneArticle(){
     const [rate,setRate] = useState('')
     const [comment, setComment] = useState('')
+    const [type, setType] = useState(false)
+    const [commentConfrim, setCommentConfrim] = useState('')
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user)
     const {currentArticle: article} = useSelector(state => state.articles)
@@ -98,6 +100,10 @@ export default function OneArticle(){
     const truther = () =>{
         setRate(100)
 
+    }
+    const handleCommentDelete = (commentId)=>{
+        dispatch(deleteComment(commentId))
+        setCommentConfrim('')
     }
 
 
@@ -234,25 +240,41 @@ export default function OneArticle(){
                     {article?.comments.map(comment => <div className="comment">
                             <div>{comment.comment}</div>
                             <div>
-                                <div>
-                                    {comment.username}
-                                {sessionUser.id === comment.user_id?<div>
-                                    {" "}...
+                                <div className="comment-user">
+                                    Posted by: {comment.username}
+                                {sessionUser?.id === comment.user_id?<div>
+                                    {comment.id === commentConfrim?<div
+                                        className="delete-img"
+                                        onClick={() => setCommentConfrim(comment.id)}></div>:<div
+                                        className="delete-img-closed"
+                                        onClick={() => setCommentConfrim(comment.id)}></div>}
+
+                                    {comment.id === commentConfrim?<div className={`comment-options comment-options-true`}>
+                                        <div>Confirm delete?</div>
+                                        <div
+                                            onClick={() => handleCommentDelete(comment.id)}
+                                            className={`navbtn`}>Delete</div>
+                                        <div  onClick={() => setCommentConfrim('')}
+                                         className={`comment-closer`}>x</div>
+                                    </div>:<div className={`comment-options`}>
+                                    </div>}
+
                                 </div>:null}
                                 </div>
                             </div>
                         </div>)}
                 </div>
-                <form className="screen-input-holder">
+                <div className="screen-input-holder">
                     <input
                         value={comment}
                         onChange= {(e) => setComment(e.target.value)}
+                        onSubmit={(e) => handleCommentSubmit(e)}
                         placeholder="Comment here..."
                         className="screen-input"/>
                     <div
                         className="navbtn smaller"
                         onClick={handleCommentSubmit}>submit</div>
-                </form>
+                </div>
             </div>
             {/* <div className="keyboard"></div> */}
         </div>
