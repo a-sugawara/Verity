@@ -81,8 +81,8 @@ const ArticleEditForm = () =>{
                     required
                     value={description}
                     onChange= {(e) => setDescription(e.target.value)}/>
-                    <input
-                    className='article-input input'
+                    <textarea
+                    className='article-input textarea-input input'
                     placeholder='Factoid'
                     required
                     value = {article}

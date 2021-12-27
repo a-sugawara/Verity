@@ -31,11 +31,14 @@
     display: flex;
     /* flex-direction:column; */
     width:100%;
-    background-color: #ffffff  ;
+    background:#ffffff3d;
+    backdrop-filter: blur( 6px );
     height: fit-content;
-    /* border-radius: 11px; */
-    box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.253) ;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.15) ;
     transition: all 0.5s ease-in-out;
+    padding-left: 1rem;
     padding-bottom: 3rem;
     margin-bottom:5rem;
     transform: scale(1);
@@ -65,7 +68,7 @@
 
 .article-card-a:hover{
     transform:scale(1.0);
-    box-shadow: 25px 25px 10px rgba(0, 0, 0, 0.253) ;
+    box-shadow: 25px 25px 10px rgba(0, 0, 0, 0.15) ;
 }
 .article{
     display: flex;
@@ -116,7 +119,8 @@
     height:6rem;
     width:6rem;
     color: #fff;
-    background-color: #594F4F;
+    background: #594f4f32;
+    backdrop-filter: blur( 6px );
     border-radius:15px;
     font-size: 5rem;
     font-weight: 700;
@@ -130,7 +134,8 @@
     height:6rem;
     width:6rem;
     color: #fff;
-    background-color: #44464b;
+    background: #44464b3b;
+    backdrop-filter: blur( 6px );
     font-size: 5rem;
     font-weight: 700;
     cursor:pointer;
@@ -149,7 +154,8 @@
     display: flex;
     justify-content: center;
     border-radius:3px;
-    background-color: #594F4F;
+    background-color: #594f4f42;
+    backdrop-filter: blur( 6px );
     padding:0.5rem 1.5rem;
     font-weight: 200;
     font-size: 2rem;
@@ -162,10 +168,9 @@
 .declarebtn:hover{
     cursor: pointer;
     border-radius:3px;
-
     transform: scale(1.6);
     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.253) ;
-    background-color: #44464b;
+    background-color: #44464b42;
     z-index: 10000;
 }
 .pagebtns{

@@ -205,6 +205,8 @@ export default function OneArticle(){
                     </div>
                 </div>
         </div>
+        <br/>
+        <br/>
         {rate?`${selection}`:"Please select degree of verity"}
         <br/>
         <br/>
@@ -253,7 +255,7 @@ export default function OneArticle(){
                                         <div>Confirm delete?</div>
                                         <div
                                             onClick={() => handleCommentDelete(comment.id)}
-                                            className={`navbtn`}>Delete</div>
+                                            className={`cardbtn`}>Delete</div>
                                         <div  onClick={() => setCommentConfrim('')}
                                          className={`comment-closer`}>x</div>
                                     </div>:<div className={`comment-options`}>
@@ -264,17 +266,19 @@ export default function OneArticle(){
                             </div>
                         </div>)}
                 </div>
-                <div className="screen-input-holder">
+                <form
+                    onSubmit={(e)=>handleCommentSubmit(e)}
+                    className="screen-input-holder">
                     <input
                         value={comment}
                         onChange= {(e) => setComment(e.target.value)}
-                        onSubmit={(e) => handleCommentSubmit(e)}
+                        required
                         placeholder="Comment here..."
                         className="screen-input"/>
-                    <div
-                        className="navbtn smaller"
-                        onClick={handleCommentSubmit}>submit</div>
-                </div>
+                    <button
+                        className="cardbtn smaller"
+                        >submit</button>
+                </form>
             </div>
             {/* <div className="keyboard"></div> */}
         </div>
