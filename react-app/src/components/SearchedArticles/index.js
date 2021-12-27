@@ -1,13 +1,19 @@
 import React, { useEffect, useState, memo } from "react";
 import { Fragment } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import{ NavLink } from 'react-router-dom'
-import "./AllArticlesList.css"
+import{ NavLink, useParams } from 'react-router-dom'
+import { searchArticles } from "../../store/articles";
 
 
-export default function AllArticlesList(){
+export default function SearchedArticles(){
+    const {term} = useParams()
+    let dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
-    const {articles:articles} = useSelector(state => state.articles)
+    const {searchedArticles:articles} = useSelector(state => state.articles)
+    useEffect(()=>{
+        dispatch(searchArticles(term))},
+        [dispatch,term]
+    )
     let list
     if (articles?.length > 0){
         list = articles?.sort((a, b) => b.ratings.sum - a.ratings.sum).map((article, idx) =><div key={idx} className={`list-card-container`}>

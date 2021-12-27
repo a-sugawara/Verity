@@ -84,4 +84,4 @@ def update_article(id):
 @article_routes.route('/discover/<string:term>')
 def search_article(term):
     articles = Article.query.filter(Article.article.ilike("%" + term + "%"))
-    return {'articles': [article.to_dict() for article in articles]}
+    return {'searchedArticles': [article.to_dict() for article in articles]}

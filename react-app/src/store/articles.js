@@ -4,11 +4,15 @@ const SET_ONE_ARTICLE = 'article/SET_ONE_ARTICLE';
 const ADD_ARTICLE = 'article/ADD_ARTICLE';
 const EDIT_ARTICLE = 'article/EDIT_ARTICLE';
 const DELETE_ARTICLE = 'article/DELETE_ARTICLE';
+
 const ADD_RATING = 'rating/ADD_RATING';
 const EDIT_RATING = 'rating/EDIT_RATING';
+
 const ADD_COMMENT = 'article/ADD_COMMENT';
 const EDIT_COMMENT = 'article/EDIT_COMMENT';
 const DELETE_COMMENT = 'article/DELETE_COMMENT';
+
+const GET_SEARCHED = "article/GET_SEARCHED"
 
 const setArticles = (payload) => ({
   type: SET_ARTICLES,
@@ -32,6 +36,13 @@ const removeArticle = (payload) => ({
   type: DELETE_ARTICLE,
   payload
 })
+const setSearchedArticles = (articles) => {
+  return {
+    type: GET_SEARCHED,
+    payload: articles
+  }
+}
+
 const addNewRating = (payload) => ({
   type:ADD_RATING,
   payload
@@ -143,6 +154,14 @@ export const editArticle = (articleInfo, id) => async (dispatch) => {
   }
 
 }
+export const searchArticles = (term) => async (dispatch) => {
+  const response = await fetch(`/api/articles/discover/${term}`);
+
+  if (response.ok) {
+      const projects = await response.json();
+      dispatch(setSearchedArticles(projects));
+  }
+};
 export const deleteArticle = (id) => async (dispatch) => {
 
   const response = await fetch(`/api/articles/${id}`, {
@@ -282,12 +301,15 @@ export const deleteComment = (id) => async (dispatch) => {
 
 }
 
-const initialState = { articles:null, currentArticle:null}
+const initialState = { articles:null, currentArticle:null, searchedArticles:null}
 
 export default function reducer(state = initialState, action) {
     let newState
   switch (action.type) {
     case SET_ARTICLES:
+        newState = {...state}
+        return { ...newState, ...action.payload }
+    case GET_SEARCHED:
         newState = {...state}
         return { ...newState, ...action.payload }
     case SET_ONE_ARTICLE:
