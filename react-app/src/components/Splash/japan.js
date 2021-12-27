@@ -30,7 +30,7 @@ export default function Japan() {
                     Posted by: Bobby
                     <br/>
                     100% accuracy rating
-                    <a className="navbtn" target="_blank" href={'https://en.wikipedia.org/wiki/Japanese_carpentry#:~:text=Japanese%20carpentry%20was%20developed%20more,screws%2C%20glue%20or%20electric%20tools.'}>Source</a>
+                    <a className="jbtn" target="_blank" href={'https://en.wikipedia.org/wiki/Japanese_carpentry#:~:text=Japanese%20carpentry%20was%20developed%20more,screws%2C%20glue%20or%20electric%20tools.'}>Source</a>
                 </div>
             </div>
         </div>

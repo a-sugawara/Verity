@@ -11,7 +11,7 @@ function LoginModal(){
 
     return (
         <div className="navbtn-holder">
-            <div className="navbtn" onClick={() => setShowModal(true)}>Login</div>
+            <div className="jbtn" onClick={() => setShowModal(true)}>Login</div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <LoginForm />

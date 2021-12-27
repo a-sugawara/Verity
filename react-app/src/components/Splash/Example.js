@@ -29,14 +29,18 @@ export default function Example() {
             <div className="splash-container-example">
                 <div className="truth-animation">
 
-                        <br/>
+                        {/* <br/>
                         <div className="meter-card">
                             METER OF TRUTH
-                        </div>
-                        <div className={`bar-test bar-test-${bool}`} >
+                        </div> */}
+                        <svg className="circle-meter">
+                            <circle className="circle-container" cx="120" cy="120" r="120"></circle>
+                            <circle className={`circle-progress circle-progress-${rate}`} cx="120" cy="120" r="120"></circle>
+                        </svg>
+                        {/* <div className={`bar-test bar-test-${bool}`} >
 
-                        </div>
-                        <div className="left-meter"></div>
+                        </div> */}
+                        {/* <div className="left-meter"></div> */}
                         {/* <div className="right-meter"></div> */}
 
                 </div>
@@ -88,12 +92,13 @@ export default function Example() {
                     <br/>
                     <br/>
                     {rate===1? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/922093439854731274/UnVerifiedlogo.png"/>:null}
-                    
+
                     {rate===100? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/921974219733082173/Verified.png"/>:null}
                     <br/>
-                    {rate===1? 'If an article is verified to be "false", it will recieve this "X" ':null}
+                    {rate===1? 'If an articles ratings is below 50%, it will recieve this "X" ':null}
+                    {rate===50? 'If an articles ratings is above 50%, but under 75%, it will be marked "up for debate" ':null}
 
-                    {rate===100? 'If an article is verified to be "true", it will recieve this check ':null}
+                    {rate===100? 'If an articles ratings is above 75%, it will recieve this check ':null}
                     <br/>
                     <br/>
                     <br/>
