@@ -10,6 +10,7 @@
 .list-card-container{
     display: flex;
     flex-direction: column;
+    position: relative;
     background:rgba(255, 255, 255, 0.185);
     backdrop-filter: blur(6px);
     padding: 3.5rem 1.5rem ;
@@ -21,11 +22,52 @@
     min-height:30rem;
     align-items: center;
     justify-content:center;
-    /* justify-content:space-between; */
+
     margin: 2rem;
     /* border-bottom: 1px solid black; */
     box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.137);
     gap: 2rem;
+    overflow: hidden;
+}
+.list-sidebar-green{
+    position: absolute;
+    height: 180%;
+    transform:rotate(45deg) translate(24rem, 0px);
+    background:rgba(27, 187, 80, 0.137);
+    width: 18rem;
+    left:0;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+.list-sidebar-red{
+    position: absolute;
+    height: 180%;
+    transform:rotate(45deg) translate(24rem, 0px);
+    background:rgba(112, 28, 28, 0.137);
+    width: 18rem;
+    left:0;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+.list-sidebar-yellow{
+    position: absolute;
+    height: 180%;
+    transform:rotate(45deg) translate(24rem, 0px);
+    background:rgba(129, 127, 30, 0.137);
+    width: 18rem;
+    left:0;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+.list-sidebar{
+    position: absolute;
+    height: 180%;
+    transform:rotate(45deg) translate(24rem, 0px);
+    background:rgba(19, 19, 78, 0.137);
+    width: 18rem;
+    left:0;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
 }
 .list-title{
     display:flex;

@@ -18,6 +18,7 @@ import Example from './components/Splash/Example'
 import Animation2 from './components/Splash/Animation2';
 import CallToAction from './components/Splash/CallToAction';
 import AllArticlesList from './components/AllArticlesList'
+import SearchedArticles from './components/SearchedArticles'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -64,6 +65,10 @@ function App() {
         <Route path='/home' exact={true}>
         <NavBar />
           <AllArticles articles={articles}/>
+        </Route>
+        <Route path='/discover/:term' exact={true}>
+        <NavBar />
+        <SearchedArticles/>
         </Route>
         <Route path='/' exact={true} >
           <Splash/>
