@@ -1,6 +1,6 @@
-# Flask React Project
+# Verity
 
-This is the starter for the Flask React project.
+Verity is a site dedicated to finding the truth.
 
 ## Getting started
 
