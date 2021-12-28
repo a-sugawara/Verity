@@ -16,22 +16,40 @@ function User() {
     })();
   }, [userId]);
 
+  let articles
+  let proRating
+  let comments
+  if (user) {
+    articles = user.article? Object.values(user.article):null
+    comments = user.comment? Object.values(user.comment):null
+    proRating =(articles?.reduce( (acc, article) => acc + article.ratings.sum,0))/(articles?.reduce( (acc, article) => acc + article.ratings.len,0))
+  }
   if (!user) {
     return null;
   }
 
+  console.log(articles)
+
   return (
-    <ul>
-      <li>
-        <strong>User Id</strong> {userId}
-      </li>
-      <li>
-        <strong>Username</strong> {user.username}
-      </li>
-      <li>
-        <strong>Email</strong> {user.email}
-      </li>
-    </ul>
+    <div className="profile-page">
+      <div className="pro-user"> {user.username}</div>
+      <div className="pro-cna-container">
+        <div className="pro-comment-container">
+          <div className="comments">
+            {comments?.map(comment => <div className="pro-comment"> {comment.comment}</div>)}
+          </div>
+        </div>
+          {proRating?<div className="pro-score">User Score: {proRating}</div>:"Not enough info"}
+      </div>
+      <div>
+      <div className="pro-articles">
+          {articles?.map(article => <div className="pro-img-holder">
+              <div>{article.title}</div>
+              <img  className="pro-img" src={article.images[0]}/>
+          </div>)}
+      </div>
+      </div>
+    </div>
   );
 }
 export default User;

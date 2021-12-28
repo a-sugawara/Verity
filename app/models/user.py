@@ -30,5 +30,14 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+        }
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'comment': {comment.id:comment.to_dict() for comment in self.comment},
+            'article': {article.id:article.to_dict() for article in self.article}
+
         }

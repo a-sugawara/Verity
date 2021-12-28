@@ -27,6 +27,7 @@
     box-shadow: 25px 25px 10px rgba(0, 0, 0, 0.253) ;
 
 }
+
 .article-card:hover .card-img{
     width:100%;
     height:auto;

@@ -86,7 +86,7 @@
     border:none;
     outline:none;
     width:80%;
-    background-color:grey;
+    background-color:rgba(128, 128, 128, 0);
     -webkit-text-fill-color: white;
     color:white;
     border-bottom: 3px solid #0B46B2;
