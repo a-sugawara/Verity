@@ -11,6 +11,8 @@ export default function OneArticle(){
     const [rate,setRate] = useState('')
     const [comment, setComment] = useState('')
     const [type, setType] = useState(false)
+    const [errBool, setErrBool] = useState(false)
+    const [errors, setErrors] = useState([])
     const [commentConfrim, setCommentConfrim] = useState('')
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user)
@@ -20,6 +22,14 @@ export default function OneArticle(){
     if(!sessionUser){
         history.push('/')
     }
+    const validator = () => {
+        let error = []
+
+        if(comment.length > 250) {
+            error.push('. : Comment cannot exceed 250 characters.')
+        }
+        return error;
+    }
 
     let userRating
     let checkedRating = article?.ratings.find(rating => rating.user_id === sessionUser?.id)
@@ -28,7 +38,7 @@ export default function OneArticle(){
     let userButtons
     if(sessionUser?.id === article?.user_id){
         userButtons =  <div className="navbtn-holder-col">
-        <ArticleEditModal />
+        <ArticleEditModal article={article}/>
         <ArticleDeleteModal />
     </div>
     }
@@ -61,33 +71,39 @@ export default function OneArticle(){
         if(!rate){
             setRate("no selection")
             return
-
         }
+            const rating = {
+                user_id:sessionUser?.id,
+                    article_id:+id,
+                    rating:+rate
+                }
+                if(checkedRating){
+                    dispatch(putRating(rating, checkedRating.id,checkedRating.rating))
 
-        const rating = {
-            user_id:sessionUser?.id,
-                article_id:+id,
-                rating:+rate
-            }
-            if(checkedRating){
-                dispatch(putRating(rating, checkedRating.id,checkedRating.rating))
-
+                    setRate('')
+                    return
+                }
+                dispatch(addRating(rating))
                 setRate('')
-                return
-            }
-            dispatch(addRating(rating))
-            setRate('')
+
+
     }
     const handleCommentSubmit = (e) => {
         e.preventDefault();
-
-        const commentInfo = {
-            user_id:sessionUser?.id,
-                article_id:+id,
-                comment
+        const errorsArr = validator()
+        if(errorsArr.length) {
+            setErrBool(true)
+            setErrors(errorsArr)
+        }else{
+            setErrBool(false)
+            const commentInfo = {
+                user_id:sessionUser?.id,
+                    article_id:+id,
+                    comment
+                }
+                dispatch(postComment(commentInfo))
+                setComment('')
             }
-            dispatch(postComment(commentInfo))
-            setComment('')
     }
     const falser = () =>{
         setRate(1)
@@ -127,7 +143,7 @@ export default function OneArticle(){
                 <div className="cardbtn">
                     <a target="_blank" href={article?.description}>Source</a>
                 </div>
-                Posted by: {article?.username}<br/>{averageRating}% accuracy rating
+                <div className="flexrow">Posted by: <NavLink to={`/users/${article?.user_id}`}>{article?.username}</NavLink></div><br/>{averageRating}% accuracy rating
                 </div>
             </div>
             <div className="card-info">
@@ -228,6 +244,11 @@ export default function OneArticle(){
         </div>
         </div>
         <div className="comments-box">
+        <div className={`errors errors-${errBool}`}>
+                {errors.map((error, ind) => (
+                <div key={ind}>{error.split(':')[1]}</div>
+            ))}
+            </div>
                 <div className="comments-box-title" >
                     <div>Comments</div>
                     <div className="comments-box-circles">
