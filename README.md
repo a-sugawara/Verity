@@ -2,6 +2,16 @@
 
 Verity is a site dedicated to finding the truth.
 
+# Verity at a glance
+
+# Application Architecture & Technologies Used
+
+# Frontend Overview
+
+# Backend Overview
+
+# Conclusion & Next Steps
+
 ## Getting started
 
 1. Clone this repository (only this branch)
