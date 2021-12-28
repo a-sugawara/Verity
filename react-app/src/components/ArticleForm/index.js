@@ -9,6 +9,7 @@ const ArticleForm = () =>{
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user)
     const [title, setTitle] = useState('')
+    const [errBool, setErrBool] = useState(false)
     const [description, setDescription] = useState('')
     const [article, setArticle] = useState('')
     const [image_url, setImage] = useState('')
@@ -22,6 +23,8 @@ const ArticleForm = () =>{
 
         if(title.length > 80) {
             error.push('. : Please enter a title shorter than 80 characters.')
+        } else if(description.length < 50) {
+            error.push('. : Source URL need to be at least 50 characters')
         }
 
         if(description.length > 150) {
@@ -36,8 +39,9 @@ const ArticleForm = () =>{
             error.push('. : Facts need to be at least 20 characters')
         }
 
-
-
+        if(!/\.(jpe?g|png|gif|bmp)$/i.test(image_url)){
+            error.push('. : Must be a valid image url')
+        }
         return error;
     }
 
@@ -45,8 +49,10 @@ const ArticleForm = () =>{
         e.preventDefault();
         const errorsArr = validator()
         if(errorsArr.length) {
+            setErrBool(true)
             setErrors(errorsArr)
         } else{
+            setErrBool(false)
             const projectInfo = {
                 user_id:sessionUser.id,
                 title,
@@ -64,12 +70,12 @@ const ArticleForm = () =>{
     }
 
     return <div className='form-page'>
-        <form className='project-form' >
-            <div className="errors">
+            <div className={`errors errors-${errBool}`}>
                 {errors.map((error, ind) => (
                 <div key={ind}>{error.split(':')[1]}</div>
             ))}
             </div>
+        <form className='project-form' >
             <div className="form-title">Declare a Fact</div>
             <input
             className='article-title-input input'

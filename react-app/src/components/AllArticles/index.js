@@ -1,11 +1,13 @@
 import React, { useEffect, useState, memo } from "react";
 import { Fragment } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import{ NavLink } from 'react-router-dom'
+import{ NavLink } from 'react-router-dom';
+import {getAllArticles} from'../../store/articles'
 import './AllArticles.css'
 import './AllArticlesRevision.css'
 
 export default function AllArticles(){
+    let dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
     const {articles:articles} = useSelector(state => state.articles)
     const [artIdx, setArtIdx] = useState(0)
@@ -15,7 +17,7 @@ export default function AllArticles(){
 
     useEffect(() => {
         setBool(true)
-
+        dispatch(getAllArticles())
       }, []);
 
 
@@ -75,7 +77,6 @@ export default function AllArticles(){
 
         }
     }
-    let dispatch = useDispatch()
     // let articles = useSelector(state => state.articles.articles)
 
     const article = articles && articles.length>0 && articles[artIdx]
@@ -158,7 +159,6 @@ export default function AllArticles(){
             </div>
             <div className="pagebtns">{user? <NavLink to={`/declare`}><div className="declarebtn">Declare a Truth</div></NavLink>:null}
                 <NavLink to={`/all`}><div className="declarebtn">See All Claims</div></NavLink>
-                <NavLink to={`/search`}><div className="declarebtn">Search</div></NavLink>
             </div>
         </div>
         )
@@ -183,7 +183,7 @@ const Article = ({ article, idx, bool, zIndex, parent, direction='a' }) => {
                     <div className="cardbtn">
                         <a target="_blank" href={article.description}>Source</a>
                      </div>
-                     Posted by: {article.username}<br/>{article.ratings.len >0?article.ratings.sum/article.ratings.len:0}% accuracy rating<br/> {article.comments} comments
+                     <div className="flexrow">Posted by: <NavLink to={`/users/${article.user_id}`}>{article.username}</NavLink></div><br/>{article.ratings.len >0?article.ratings.sum/article.ratings.len:0}% accuracy rating<br/> {article.comments} comments
                 </div>
             </div>
             <div className="card-info">

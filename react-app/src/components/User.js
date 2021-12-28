@@ -35,11 +35,16 @@ function User() {
       <div className="pro-user"> {user.username}</div>
       <div className="pro-cna-container">
         <div className="pro-comment-container">
-          <div className="comments">
-            {comments?.map(comment => <div className="pro-comment"> {comment.comment}</div>)}
-          </div>
+          <div className="pro-comment-title">Recent comments</div>
+          {/* <div className="comments"> */}
+            {comments?.length > 3? comments?.map(comment => <div className="pro-comment"> <div className="p-comment">{"- "}{comment.comment}</div><div className="comment-title">From: {comment.articleTitle}</div></div>).slice(comments?.length -4,comments?.length -1):comments?.map(comment => <div className="pro-comment"> <div className="p-comment">{"- "}{comment.comment}</div><div className="comment-title">From: {comment.articleTitle}</div></div>)}
+          {/* </div> */}
         </div>
-          {proRating?<div className="pro-score">User Score: {proRating}</div>:"Not enough info"}
+          <div className="pro-score-container">
+            <div>
+              {proRating?<div className="pro-score">User Score: {proRating}%</div>:"Not enough info"}
+            </div>
+          </div>
       </div>
       <div>
       <div className="pro-articles">

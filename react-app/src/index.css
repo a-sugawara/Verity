@@ -6,6 +6,7 @@
 
 *{
     font-family: 'Inconsolata', monospace;
+
 }
 a, a:hover, a:focus, a:active {
     text-decoration: none;
@@ -200,6 +201,24 @@ textarea:hover{
     align-items:center;
     position: relative;
 }
+.errors{
+    z-index: 1000;
+    position: absolute;
+    top:5%;
+    background:rgba(255, 0, 0, 0.424);
+    color:white;
+    backdrop-filter: blur( 6px );
+    padding:1rem 1.5rem;
+    transition: all 0.5s ease-in-out;
+    transform:scale(0);
+    border-top-left-radius:25px;
+    border-bottom-right-radius:25px;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253) ;
+
+}
+.errors-true{
+    transform:scale(1)
+}
 /**************profile*****************************/
 .profile-page{
     display:flex;
@@ -219,6 +238,9 @@ textarea:hover{
 .pro-user{
     font-size: 2rem;
     color: #fff;
+    padding-top: 1rem;
+}
+.pro-comment-title{
 }
 .pro-cna-container{
     display: flex;
@@ -226,37 +248,67 @@ textarea:hover{
     justify-content: space-between;
 }
 .pro-comment-container{
+    position: relative;
     display: flex;
     flex-direction:column;
     width:42vw;
     justify-content: space-around;
     align-items: center;
     height: 40vh;
-    font-size:2.5rem;
     background:rgba(0, 0, 0, 0.171);
     backdrop-filter: blur(6px);
-    color:rgb(255, 255, 255);
-    gap: 1rem;
     border-top-left-radius:20px;
     border-bottom-right-radius:20px;
     overflow-y: auto;
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253) ;
+    color:white;
+}
+.pro-score-container{
+    position: relative;
+    display: flex;
+    flex-direction:column;
+    width:42vw;
+    font-size: 4rem;
+    color:white;
+    font-weight:200;
+    justify-content: space-around;
+    align-items: center;
+    height: 40vh;
+    background:rgba(0, 0, 0, 0.171);
+    backdrop-filter: blur(6px);
+    border-top-left-radius:20px;
+    border-bottom-right-radius:20px;
+    overflow-y: auto;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253) ;
+
 }
 .pro-comment{
     display: flex;
-    align-items: center;
-    font-size:2.5rem;
+    flex-direction:column;
+    align-items: flex-start;
+    justify-content: space-around;
     background:rgba(255, 255, 255, 0.301);
     backdrop-filter: blur(6px);
-    color:rgb(255, 255, 255);
     min-height:8vh;
     width:80%;
     padding:0.75rem;
     border-top-left-radius:20px;
     border-bottom-right-radius:20px;
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253) ;
-    margin: 0.5rem;
+    /* margin: 0.25rem; */
 
+}
+.pro-score{
+    margin: 1rem;
+}
+.p-comment{
+    font-size:1.5rem;
+    color:rgb(255, 255, 255);
+
+}
+.comment-title{
+    font-size:1rem;
+    color:rgb(255, 255, 255);
 
 }
 .pro-articles{
@@ -333,4 +385,7 @@ textarea:hover{
     /* transform: translateY(-15%); */
     transition: all 0.8s linear;
     opacity: 0.1;
+}
+.flexrow{
+    display: flex;
 }

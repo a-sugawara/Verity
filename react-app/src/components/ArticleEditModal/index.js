@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Modal } from '../context/Modal';
 import ArticleEditForm from './ArticleEditForm';
 
-function ArticleEditModal(){
+function ArticleEditModal({article}){
     const [showModal, setShowModal] = useState(false)
 
     return (
@@ -11,7 +11,7 @@ function ArticleEditModal(){
             <div onClick={() => setShowModal(true)} className="cardbtn">Edit</div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <ArticleEditForm setShowModal={setShowModal}/>
+                    <ArticleEditForm setShowModal={setShowModal} currentArticle={article}/>
                 </Modal>
             )}
         </div>
