@@ -3,10 +3,13 @@
 Verity is a site dedicated to finding the truth.
 
 # Verity at a glance
-![Alt Text](https://cdn.discordapp.com/attachments/920285009099751524/925601744002625546/splash1.gif)
 
 
+![Splash Gif](https://cdn.discordapp.com/attachments/920285009099751524/925601744002625546/splash1.gif)
 
+![Carousel Gif](https://cdn.discordapp.com/attachments/920285009099751524/925604498280423434/shortercar.gif)
+
+![Delete Modal Gif](https://cdn.discordapp.com/attachments/920285009099751524/925606175700058153/deletemodal.gif)
 # Application Architecture & Technologies Used
 
 # Frontend Overview
