@@ -69,41 +69,43 @@ const ArticleForm = () =>{
         }
     }
 
-    return <div className='form-page'>
+    return<div className="full-container">
+        <div className='form-page'>
             <div className={`errors errors-${errBool}`}>
                 {errors.map((error, ind) => (
                 <div key={ind}>{error.split(':')[1]}</div>
             ))}
             </div>
-        <form className='project-form' >
-            <div className="form-title">Declare a Fact</div>
-            <input
-            className='article-title-input input'
-            placeholder='Title'
-            required
-            value = {title}
-            onChange= {(e) => setTitle(e.target.value)}/>
-            <input
-            className='article-description-input input'
-            placeholder='Source'
-            required
-            value={description}
-            onChange= {(e) => setDescription(e.target.value)}/>
-            <textarea
-            className='textarea-input input'
-            placeholder='Factoid'
-            required
-            value = {article}
-            onChange= {(e) => setArticle(e.target.value)}/>
-            <input
-            className='article-input input'
-            placeholder='Image URL'
-            required
-            value = {image_url}
-            onChange= {(e) => setImage(e.target.value)}/>
-            <div onClick={handleSubmit}
-                className="navbtn">Submit</div>
-        </form>
+            <form className='project-form' >
+                <div className="form-title">Declare a Fact</div>
+                <input
+                className='article-title-input input'
+                placeholder='Title'
+                required
+                value = {title}
+                onChange= {(e) => setTitle(e.target.value)}/>
+                <input
+                className='article-description-input input'
+                placeholder='Source'
+                required
+                value={description}
+                onChange= {(e) => setDescription(e.target.value)}/>
+                <textarea
+                className='textarea-input input'
+                placeholder='Factoid'
+                required
+                value = {article}
+                onChange= {(e) => setArticle(e.target.value)}/>
+                <input
+                className='article-input input'
+                placeholder='Image URL'
+                required
+                value = {image_url}
+                onChange= {(e) => setImage(e.target.value)}/>
+                <div onClick={handleSubmit}
+                    className="navbtn">Submit</div>
+            </form>
+        </div>
     </div>
 }
 export default ArticleForm;

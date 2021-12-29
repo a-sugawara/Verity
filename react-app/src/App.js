@@ -19,6 +19,7 @@ import Animation2 from './components/Splash/Animation2';
 import CallToAction from './components/Splash/CallToAction';
 import AllArticlesList from './components/AllArticlesList'
 import SearchedArticles from './components/SearchedArticles'
+import Footer from './components/Footer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -91,6 +92,7 @@ function App() {
           <User />
         </ProtectedRoute>
       </Switch>
+      <Footer/>
     </BrowserRouter>
   );
 }

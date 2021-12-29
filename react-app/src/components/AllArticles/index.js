@@ -143,22 +143,23 @@ export default function AllArticles(){
     //         </div>
     //     </div>
     //     )
-        return (<div className="all-articles-page">
-
-            <div className="cards-container">
-                <div className="carbtn" onClick={prevArticle}>{'<'}</div>
-                    {articles &&
-                        <>
-                            <MemoArticle article={article} idx={artIdx} direction={direction} bool={bool} zIndex={0} parent={true} />
-                            { behindArticle &&
-                                <MemoArticle article={behindArticle} idx={artIdx-1} bool={bool} zIndex={showBehindArticleForward ? 1000 : -1} parent={false} />
-                            }
-                        </>
-                    }
-                <div className="carbtn" onClick={nextArticle}>{'>'}</div>
-            </div>
-            <div className="pagebtns">{user? <NavLink to={`/declare`}><div className="declarebtn">Declare a Truth</div></NavLink>:null}
-                <NavLink to={`/all`}><div className="declarebtn">See All Claims</div></NavLink>
+        return (<div className="full-container">
+            <div className="all-articles-page">
+                <div className="cards-container">
+                    <div className="carbtn" onClick={prevArticle}>{'<'}</div>
+                        {articles &&
+                            <>
+                                <MemoArticle article={article} idx={artIdx} direction={direction} bool={bool} zIndex={0} parent={true} />
+                                { behindArticle &&
+                                    <MemoArticle article={behindArticle} idx={artIdx-1} bool={bool} zIndex={showBehindArticleForward ? 1000 : -1} parent={false} />
+                                }
+                            </>
+                        }
+                    <div className="carbtn" onClick={nextArticle}>{'>'}</div>
+                </div>
+                <div className="pagebtns">{user? <NavLink to={`/declare`}><div className="declarebtn">Declare a Truth</div></NavLink>:null}
+                    <NavLink to={`/all`}><div className="declarebtn">See All Claims</div></NavLink>
+                </div>
             </div>
         </div>
         )
