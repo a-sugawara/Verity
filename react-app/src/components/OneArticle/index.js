@@ -128,181 +128,182 @@ export default function OneArticle(){
 
 
 
-    return <div className="scards-container">
-    <div className={`article-card-container`}>
-        <div className="center-column">
-        <div className='bg1'></div>
-        <div className={`article-card article-card-a`}>
-            <div className="img-description">
-                <div className="img-holder">
-                    <img
-                        src={article?.images[0]||"https://cdn.discordapp.com/attachments/920285009099751524/921089742756532284/unknown.png"}
-                        className="card-img" />
+    return<div className="full-container">
+    <div className="scards-container">
+        <div className={`article-card-container`}>
+            <div className="center-column">
+            <div className='bg1'></div>
+            <div className={`article-card article-card-a`}>
+                <div className="img-description">
+                    <div className="img-holder">
+                        <img
+                            src={article?.images[0]||"https://cdn.discordapp.com/attachments/920285009099751524/921089742756532284/unknown.png"}
+                            className="card-img" />
+                    </div>
+                    <div className="card-description">
+                    <div className="cardbtn">
+                        <a target="_blank" href={article?.description}>Source</a>
+                    </div>
+                    <div className="flexrow">Posted by: <NavLink to={`/users/${article?.user_id}`}>{article?.username}</NavLink></div><br/>{averageRating}% accuracy rating
+                    </div>
                 </div>
-                <div className="card-description">
-                <div className="cardbtn">
-                    <a target="_blank" href={article?.description}>Source</a>
-                </div>
-                <div className="flexrow">Posted by: <NavLink to={`/users/${article?.user_id}`}>{article?.username}</NavLink></div><br/>{averageRating}% accuracy rating
-                </div>
-            </div>
-            <div className="card-info">
-                <div className="card-title">
-                    {article?.title}
-                </div>
-                <div className="card-article">
-                    {article?.article}
-                    <br/>
-                    <br/>
-                    <br/>
-                    {article?.user_id === sessionUser?.id?userButtons:null}
-                    <div>
+                <div className="card-info">
+                    <div className="card-title">
+                        {article?.title}
+                    </div>
+                    <div className="card-article">
+                        {article?.article}
+                        <br/>
+                        <br/>
+                        <br/>
+                        {article?.user_id === sessionUser?.id?userButtons:null}
                         <div>
-
-                            {averageRating>75? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/921974219733082173/Verified.png"/>:null}
-                            {averageRating>0 && averageRating<50? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/922093439854731274/UnVerifiedlogo.png"/>:null}
-                        </div>
-                        <div>
-                            {averageRating>75? <span className='weak-grey'>This has been deemed an article of truth</span>:null}
-                            {averageRating>0 && averageRating<50? <span className="weak-grey">This has been deemed an article of untruth</span>:null}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {/* </div>
-        <div className="cards-container">
-            <div className={`article-card-container`}>
-                <div className={`article-card`}>
-                    <div className="article-title-bar">
-                        <div className="article-title">{article?.title.toUpperCase()}</div>
-                    </div>
-                    <div className="article">
-                        <div className="article-text">
-                            {article?.article}
-                        </div>
-                        <div className="article-description">
-                            <a target="_blank" href={article?.description}>Source</a>
-                        </div>
-                        <div className="article-details">
-                            Posted by: {article?.username} - {averageRating}% accuracy rating
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                        <div className="navbtn-holder-col">
-                        <ArticleEditModal />
-                        <div className="navbtn">Delete</div>
-                    </div> */}
-        </div>
-        <div className="btnbox-white">
-            <div
-                className="btn btn-red">
-                    <div className="fals-grey"
-                        onClick={falser}
-                        >
-                        False
-                    </div>
-
-                </div>
-            <div
-                className="btn btn-yellow">
-                    <div className="mayb-grey"
-                        onClick={mayber}
-                        >
-                        Maybe
-                    </div>
-                </div>
-            <div
-                className="btn btn-green">
-                    <div className="truth-grey"
-                        onClick={truther}
-                        >
-                        True
-                    </div>
-                </div>
-        </div>
-        <br/>
-        <br/>
-        {rate?`${selection}`:"Please select degree of verity"}
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        {userRating}
-            <input
-            hidden
-            required
-            placeholder="Accuracy Rating"
-            value={rate}
-            onChange={(e) =>setRate(e.target.value)}
-            />
-            {rate?<div
-                style={{"margin" : "1rem"}}
-                className="navbtn"
-                onClick={handleSubmit}>Rate</div>:null}
-
-        </div>
-        </div>
-        <div className="comments-box">
-        <div className={`errors errors-${errBool}`}>
-                {errors.map((error, ind) => (
-                <div key={ind}>{error.split(':')[1]}</div>
-            ))}
-            </div>
-                <div className="comments-box-title" >
-                    <div>Comments</div>
-                    <div className="comments-box-circles">
-                        <div className="tinycircle red"></div>
-                        <div className="tinycircle yellow"></div>
-                        <div className="tinycircle green"></div>
-                    </div>
-                </div>
-            <div className="screen-holder">
-                <div className="screen">
-                    {article?.comments.length ===0?<div className="comment">Be the first to spark the discussion!</div>:null}
-                    {article?.comments.map(comment => <div className="comment">
-                            <div>{comment.comment}</div>
                             <div>
-                                <div className="comment-user">
-                                    Posted by: {comment.username}
-                                {sessionUser?.id === comment.user_id?<div>
-                                    {comment.id === commentConfrim?<div
-                                        className="delete-img"
-                                        onClick={() => setCommentConfrim(comment.id)}></div>:<div
-                                        className="delete-img-closed"
-                                        onClick={() => setCommentConfrim(comment.id)}></div>}
 
-                                    {comment.id === commentConfrim?<div className={`comment-options comment-options-true`}>
-                                        <div>Confirm delete?</div>
-                                        <div
-                                            onClick={() => handleCommentDelete(comment.id)}
-                                            className={`cardbtn`}>Delete</div>
-                                        <div  onClick={() => setCommentConfrim('')}
-                                         className={`comment-closer`}>x</div>
-                                    </div>:<div className={`comment-options`}>
-                                    </div>}
-
-                                </div>:null}
-                                </div>
+                                {averageRating>75? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/921974219733082173/Verified.png"/>:null}
+                                {averageRating>0 && averageRating<50? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/922093439854731274/UnVerifiedlogo.png"/>:null}
                             </div>
-                        </div>)}
+                            <div>
+                                {averageRating>75? <span className='weak-grey'>This has been deemed an article of truth</span>:null}
+                                {averageRating>0 && averageRating<50? <span className="weak-grey">This has been deemed an article of untruth</span>:null}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <form
-                    onSubmit={(e)=>handleCommentSubmit(e)}
-                    className="screen-input-holder">
-                    <input
-                        value={comment}
-                        onChange= {(e) => setComment(e.target.value)}
-                        required
-                        placeholder="Comment here..."
-                        className="screen-input"/>
-                    <button
-                        className="cardbtn smaller"
-                        >submit</button>
-                </form>
+            {/* </div>
+            <div className="cards-container">
+                <div className={`article-card-container`}>
+                    <div className={`article-card`}>
+                        <div className="article-title-bar">
+                            <div className="article-title">{article?.title.toUpperCase()}</div>
+                        </div>
+                        <div className="article">
+                            <div className="article-text">
+                                {article?.article}
+                            </div>
+                            <div className="article-description">
+                                <a target="_blank" href={article?.description}>Source</a>
+                            </div>
+                            <div className="article-details">
+                                Posted by: {article?.username} - {averageRating}% accuracy rating
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            <div className="navbtn-holder-col">
+                            <ArticleEditModal />
+                            <div className="navbtn">Delete</div>
+                        </div> */}
             </div>
-            {/* <div className="keyboard"></div> */}
+            <div className="btnbox-white">
+                <div
+                    className="btn btn-red">
+                        <div className="fals-grey"
+                            onClick={falser}
+                            >
+                            False
+                        </div>
+
+                    </div>
+                <div
+                    className="btn btn-yellow">
+                        <div className="mayb-grey"
+                            onClick={mayber}
+                            >
+                            Maybe
+                        </div>
+                    </div>
+                <div
+                    className="btn btn-green">
+                        <div className="truth-grey"
+                            onClick={truther}
+                            >
+                            True
+                        </div>
+                    </div>
+            </div>
+            <br/>
+            <br/>
+            {rate?`${selection}`:"Please select degree of verity"}
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            {userRating}
+                <input
+                hidden
+                required
+                placeholder="Accuracy Rating"
+                value={rate}
+                onChange={(e) =>setRate(e.target.value)}
+                />
+                {rate?<div
+                    style={{"margin" : "1rem"}}
+                    className="navbtn"
+                    onClick={handleSubmit}>Rate</div>:null}
+
+            </div>
+            </div>
+            <div className="comments-box">
+            <div className={`errors errors-${errBool}`}>
+                    {errors.map((error, ind) => (
+                    <div key={ind}>{error.split(':')[1]}</div>
+                ))}
+                </div>
+                    <div className="comments-box-title" >
+                        <div>Comments</div>
+                        <div className="comments-box-circles">
+                            <div className="tinycircle red"></div>
+                            <div className="tinycircle yellow"></div>
+                            <div className="tinycircle green"></div>
+                        </div>
+                    </div>
+                <div className="screen-holder">
+                    <div className="screen">
+                        {article?.comments.length ===0?<div className="comment">Be the first to spark the discussion!</div>:null}
+                        {article?.comments.map(comment => <div className="comment">
+                                <div>{comment.comment}</div>
+                                <div>
+                                    <div className="comment-user">
+                                        Posted by: {comment.username}
+                                    {sessionUser?.id === comment.user_id?<div>
+                                        {comment.id === commentConfrim?<div
+                                            className="delete-img"
+                                            onClick={() => setCommentConfrim(comment.id)}></div>:<div
+                                            className="delete-img-closed"
+                                            onClick={() => setCommentConfrim(comment.id)}></div>}
+
+                                        {comment.id === commentConfrim?<div className={`comment-options comment-options-true`}>
+                                            <div>Confirm delete?</div>
+                                            <div
+                                                onClick={() => handleCommentDelete(comment.id)}
+                                                className={`cardbtn`}>Delete</div>
+                                            <div  onClick={() => setCommentConfrim('')}
+                                            className={`comment-closer`}>x</div>
+                                        </div>:<div className={`comment-options`}>
+                                        </div>}
+
+                                    </div>:null}
+                                    </div>
+                                </div>
+                            </div>)}
+                    </div>
+                    <form
+                        onSubmit={(e)=>handleCommentSubmit(e)}
+                        className="screen-input-holder">
+                        <input
+                            value={comment}
+                            onChange= {(e) => setComment(e.target.value)}
+                            required
+                            placeholder="Comment here..."
+                            className="screen-input"/>
+                        <button
+                            className="cardbtn smaller"
+                            >submit</button>
+                    </form>
+                </div>
+                {/* <div className="keyboard"></div> */}
+            </div>
         </div>
     </div>
-
 }
