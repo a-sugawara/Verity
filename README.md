@@ -3,6 +3,9 @@
 Verity is a site dedicated to finding the truth.
 
 # Verity at a glance
+![Alt Text](https://cdn.discordapp.com/attachments/920285009099751524/925601744002625546/splash1.gif)
+
+
 
 # Application Architecture & Technologies Used
 
