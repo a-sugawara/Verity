@@ -23,10 +23,11 @@ const ArticleEditForm = ({currentArticle}) =>{
     const validator = () => {
         let error = []
 
+
         if(title.length > 80) {
             error.push('. : Please enter a title shorter than 80 characters.')
         } else if(title.length < 5) {
-            error.push('. : Title need to be at least 5 characters')
+            error.push('. : Title must be at least 5 characters')
         }
 
         if(description.length > 150) {
@@ -40,6 +41,7 @@ const ArticleEditForm = ({currentArticle}) =>{
         } else if(article.length < 20) {
             error.push('. : Facts need to be at least 20 characters')
         }
+
 
         return error;
     }
