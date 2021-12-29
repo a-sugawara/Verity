@@ -23,8 +23,8 @@ const ArticleForm = () =>{
 
         if(title.length > 80) {
             error.push('. : Please enter a title shorter than 80 characters.')
-        } else if(description.length < 50) {
-            error.push('. : Source URL need to be at least 50 characters')
+        } else if(title.length < 5) {
+            error.push('. : Title must be at least 5 characters')
         }
 
         if(description.length > 150) {
@@ -39,7 +39,7 @@ const ArticleForm = () =>{
             error.push('. : Facts need to be at least 20 characters')
         }
 
-        if(!/\.(jpe?g|png|gif|bmp)$/i.test(image_url)){
+        if(!/\.(jpe?g|png|gif|bmp)/gi.test(image_url)){
             error.push('. : Must be a valid image url')
         }
         return error;
