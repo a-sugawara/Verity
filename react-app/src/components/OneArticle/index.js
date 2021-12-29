@@ -128,7 +128,7 @@ export default function OneArticle(){
 
 
 
-    return<div className="full-container">
+    return(
     <div className="scards-container">
         <div className={`article-card-container`}>
             <div className="center-column">
@@ -304,6 +304,6 @@ export default function OneArticle(){
                 </div>
                 {/* <div className="keyboard"></div> */}
             </div>
-        </div>
-    </div>
+        </div>)
+    
 }
