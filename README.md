@@ -6,15 +6,40 @@ Verity is a site dedicated to finding the truth.
 
 
 ![Splash Gif](https://cdn.discordapp.com/attachments/920285009099751524/925601744002625546/splash1.gif)
+* When you first enter Verity, you're greeted with a splash page that informs you what the site is about!
+* The splash page has custom css animation that only use vanilla css, html, and react
+
+
 
 ![Carousel Gif](https://cdn.discordapp.com/attachments/920285009099751524/925604498280423434/shortercar.gif)
+* The main way to naviagte through facts is a custom carousel which was also vanilla css (no animation libraries).
+
+
 
 ![Delete Modal Gif](https://cdn.discordapp.com/attachments/920285009099751524/925606175700058153/deletemodal.gif)
-# Application Architecture & Technologies Used
+* Leveraging react and redux, Verity is able to have dynamic feeling modals and buttons for a better user experience.
 
-# Frontend Overview
 
-# Backend Overview
+# Frontend Technologies Used
+<img src="https://cdn.discordapp.com/attachments/920285009099751524/925631805267271690/frontend-tech.png" width="300"/>
+
+# Backend Technologies Used
+<img src="https://cdn.discordapp.com/attachments/920285009099751524/925631805057548308/backend-tech.png" width="300"/>
+
+# Application Architecture
+<img src="https://cdn.discordapp.com/attachments/920285009099751524/925650376110256208/techArchnoback.png" width="900"/>
+
+### 1. User hit button/submits form (controlled component)/loads a page(useEffect) and hits a thunk.
+### 2. The thunk sends a fetch request to the api server.
+### 3. The server then sends a request to the database.
+### 4. The database then returns data to the server.
+### 5. The server then serves the data back to the thunk.
+### 6. The thunk dispatches the action creator.
+### 7. The action creator sends the action object to the reducer.
+### 8. The reducer takes the action object and updates the state.
+### 9. The state/store is then updated.
+### 10. useSelector is then used to listen to the state a pull out a “Slice of State”.
+### 11. The frontend is then updated using the information from the backend and renders the page using the frontend technology stack.
 
 # Conclusion & Next Steps
 
