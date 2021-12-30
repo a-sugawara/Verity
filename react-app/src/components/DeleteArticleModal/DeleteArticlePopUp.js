@@ -17,7 +17,7 @@ const ArticleDelete = () =>{
     const handleSubmit = async (e) => {
         await dispatch(deleteArticle(id))
         dispatch(getAllArticles())
-        history.push('/')
+        history.push('/home')
 
     }
 
