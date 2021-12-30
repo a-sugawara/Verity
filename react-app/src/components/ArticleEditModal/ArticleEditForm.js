@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {useHistory,useParams} from 'react-router-dom'
 import {editArticle} from "../../store/articles"
 
-const ArticleEditForm = ({currentArticle}) =>{
+const ArticleEditForm = ({currentArticle, setShowModal}) =>{
     const {id} = useParams()
     const dispatch = useDispatch()
     const history = useHistory()
@@ -63,6 +63,8 @@ const ArticleEditForm = ({currentArticle}) =>{
             const data = await dispatch(editArticle(articleInfo, id))
             if(data) {
                 setErrors(data)
+            }else{
+                setShowModal(false)
             }
         }
     }
