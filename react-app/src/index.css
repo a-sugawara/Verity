@@ -178,7 +178,7 @@ textarea:hover{
     position: absolute;
     top: 30%;
     bottom: 30%;
-    background: white;
+    background: rgba(255, 255, 255, 0.589);
     width: 60%;
     right:12rem;
     border-radius: 20px;
@@ -190,7 +190,8 @@ textarea:hover{
     transition: all 0.5s ease-in-out;
 }
 .searchbar-true{
-    transform: scaleX(1)
+    transform: scaleX(1);
+    box-shadow:3px 3px 5px rgba(0, 0, 0, 0.548) inset, -2px -2px 10px rgba(255, 255, 255, 0.63)inset ;
 }
 .searchform{
     outline:none;
@@ -198,6 +199,7 @@ textarea:hover{
     width: 90%;
     height: 90%;
     font-size:1.4rem;
+    background: transparent;
 }
 .btnholder{
     display:flex;
@@ -209,7 +211,8 @@ textarea:hover{
     z-index: 1000;
     position: absolute;
     top:5%;
-    background:rgba(255, 0, 0, 0.424);
+    background: linear-gradient(-135deg, rgba(255, 0, 0, 0.424), rgba(255, 0, 0, 0.2));
+    /* background:rgba(255, 0, 0, 0.424); */
     color:white;
     backdrop-filter: blur( 6px );
     padding:1rem 1.5rem;
@@ -217,7 +220,7 @@ textarea:hover{
     transform:scale(0);
     border-top-left-radius:25px;
     border-bottom-right-radius:25px;
-    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253) ;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253), -3px -3px 5px rgba(0, 0, 0, 0.253) inset, 2px 2px 10px rgba(255, 255, 255, 0.253)inset ;
 
 }
 .errors-true{
@@ -241,8 +244,9 @@ textarea:hover{
     height:4rem;
     width:4rem;
     border-radius:2rem;
-    background:rgba(255, 255, 255, 0.178);
+    background: linear-gradient(-115deg, rgba(0, 0, 0, 0.15), rgba(255, 255, 255, 0.15));
     backdrop-filter: blur( 6px );
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253), -3px -3px 5px rgba(0, 0, 0, 0.253) inset, 2px 2px 10px rgba(255, 255, 255, 0.253)inset ;
     margin-bottom: 1rem;
     margin-right: 1rem;
     justify-content:center;
@@ -256,7 +260,8 @@ textarea:hover{
     width:16rem;
     border-top-left-radius:25px;
     border-bottom-right-radius:25px;
-    background:rgba(255, 255, 255, 0.178);
+    background: linear-gradient(-115deg, rgba(128, 128, 128, 0.15), rgba(255, 255, 255, 0.15));
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253), -3px -3px 5px rgba(0, 0, 0, 0.253) inset, 2px 2px 10px rgba(255, 255, 255, 0.253)inset ;
     backdrop-filter: blur( 6px );
     margin-bottom: 1rem;
     margin-right: 1rem;
@@ -275,14 +280,14 @@ textarea:hover{
     flex-direction:column;
     justify-content:space-between;
     align-items:center;
-    background:rgba(255, 255, 255, 0.164);
+    background: linear-gradient(-115deg, rgba(0,0,0,0.15), rgba(255,255,255,0.25));
     backdrop-filter: blur( 6px );
     width:98vw;
     min-height:80vh;
     margin: auto;
     border-top-left-radius:25px;
     border-bottom-right-radius:25px;
-    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253) ;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253), -3px -3px 5px rgba(0, 0, 0, 0.253) inset, 2px 2px 10px rgba(255, 255, 255, 0.253)inset  ;
 
 }
 .pro-user{
@@ -304,13 +309,13 @@ textarea:hover{
     width:42vw;
     justify-content: space-around;
     align-items: center;
-    height: 40vh;
+    height: 42vh;
     background:rgba(0, 0, 0, 0.171);
     backdrop-filter: blur(6px);
-    border-top-left-radius:20px;
+    border-radius:20px;
     border-bottom-right-radius:20px;
     overflow-y: auto;
-    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253) ;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253) inset, -5px -5px 10px rgba(255, 255, 255, 0.253)inset ;
     color:white;
 }
 .pro-score-container{
@@ -323,13 +328,13 @@ textarea:hover{
     font-weight:200;
     justify-content: space-around;
     align-items: center;
-    height: 40vh;
+    height: 42vh;
     background:rgba(0, 0, 0, 0.171);
     backdrop-filter: blur(6px);
-    border-top-left-radius:20px;
+    border-radius:20px;
     border-bottom-right-radius:20px;
     overflow-y: auto;
-    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253) ;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253) inset, -5px -5px 10px rgba(255, 255, 255, 0.253)inset ;
 
 }
 .pro-comment{
@@ -337,15 +342,15 @@ textarea:hover{
     flex-direction:column;
     align-items: flex-start;
     justify-content: space-around;
-    background:rgba(255, 255, 255, 0.301);
+    background: linear-gradient(-115deg, rgba(0,0,0,0.22), rgba(255,255,255,0.25));
     backdrop-filter: blur(6px);
     min-height:8vh;
     width:80%;
     padding:0.75rem;
     border-top-left-radius:20px;
     border-bottom-right-radius:20px;
-    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253) ;
-    /* margin: 0.25rem; */
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253), -3px -3px 5px rgba(0, 0, 0, 0.253) inset, 2px 2px 10px rgba(255, 255, 255, 0.253)inset ;
+    margin-bottom: 0.25rem;
 
 }
 .pro-score{
@@ -396,12 +401,12 @@ textarea:hover{
     justify-content:center;
     align-items:center;
     font-size:1rem;
-    background:rgba(255, 255, 255, 0);
+    background: linear-gradient(-115deg, rgba(0, 0, 0, 0.15), rgba(255, 255, 255, 0.15));
     color:rgba(255, 255, 255, 0);
     transition: all 0.7s ease-in-out;
     gap: 1rem;
     margin-bottom: 1rem;
-    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253) ;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253), -3px -3px 5px rgba(0, 0, 0, 0.253) inset, 2px 2px 10px rgba(255, 255, 255, 0.253)inset ;
 
 }
 .pro-img-holder:hover{
@@ -425,7 +430,9 @@ textarea:hover{
     aspect-ratio: 16/9;
     /* transform: translateY(-15%); */
     transition: all 0.8s linear;
-    opacity: 1;
+    opacity: 0.6;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253), -3px -3px 5px rgba(0, 0, 0, 0.253) inset, 2px 2px 10px rgba(255, 255, 255, 0.253)inset ;
+
 }
 .pro-img-holder:hover>.pro-img{
     z-index: -10;
@@ -438,4 +445,11 @@ textarea:hover{
 }
 .flexrow{
     display: flex;
+}
+.badge{
+    height: 10rem;
+    width:auto;
+}
+.userlabel{
+    font-size: 2rem;
 }
