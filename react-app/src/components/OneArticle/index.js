@@ -261,32 +261,33 @@ export default function OneArticle(){
                 <div className="screen-holder">
                     <div className="screen">
                         {article?.comments.length ===0?<div className="comment">Be the first to spark the discussion!</div>:null}
-                        {article?.comments.map(comment => <div className="comment">
-                                <div>{comment.comment}</div>
-                                <div>
-                                    <div className="comment-user">
-                                        Posted by: {comment.username}
-                                    {sessionUser?.id === comment.user_id?<div>
-                                        {comment.id === commentConfrim?<div
-                                            className="delete-img"
-                                            onClick={() => setCommentConfrim(comment.id)}></div>:<div
-                                            className="delete-img-closed"
-                                            onClick={() => setCommentConfrim(comment.id)}></div>}
-
-                                        {comment.id === commentConfrim?<div className={`comment-options comment-options-true`}>
-                                            <div>Confirm delete?</div>
-                                            <div
-                                                onClick={() => handleCommentDelete(comment.id)}
-                                                className={`cardbtn`}>Delete</div>
-                                            <div  onClick={() => setCommentConfrim('')}
+                        {article?.comments.map(comment => <div
+                                    onMouseLeave={() => setCommentConfrim('')}
+                                    className="comment">
+                            <div>{comment.comment}</div>
+                            <div>
+                                <div className="comment-user">
+                                    Posted by: {comment.username}
+                                {sessionUser?.id === comment.user_id?<div>
+                                    {comment.id === commentConfrim?<div
+                                        className="delete-img"
+                                        onClick={() => (setCommentConfrim(''))}></div>:<div
+                                        className="delete-img-closed"
+                                        onMouseEnter={() => setCommentConfrim(comment.id)}
+                                        ></div>}
+                                    {comment.id === commentConfrim?<div className={`comment-options comment-options-true`}>
+                                        <div>Confirm delete?</div>
+                                        <div
+                                            onClick={() => handleCommentDelete(comment.id)}
+                                            className={`cardbtn`}>Delete</div>
+                                        <div  onClick={() => setCommentConfrim('')}
                                             className={`comment-closer`}>x</div>
-                                        </div>:<div className={`comment-options`}>
-                                        </div>}
-
-                                    </div>:null}
-                                    </div>
+                                    </div>:<div className={`comment-options`}>
+                                    </div>}
+                                </div>:null}
                                 </div>
-                            </div>)}
+                            </div>
+                        </div>)}
                     </div>
                     <form
                         onSubmit={(e)=>handleCommentSubmit(e)}
@@ -305,5 +306,5 @@ export default function OneArticle(){
                 {/* <div className="keyboard"></div> */}
             </div>
         </div>)
-    
+
 }

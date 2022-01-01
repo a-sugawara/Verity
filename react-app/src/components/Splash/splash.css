@@ -401,7 +401,7 @@
     stroke-width: 40px;
     transform: translate(20px, 20px);
     stroke-dasharray: 800px;
-    stroke-dashoffset: 200px;
+    stroke-dashoffset: 0px;
     transition:all 1s ease-in-out;
 
 }

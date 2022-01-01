@@ -40,11 +40,16 @@ function User() {
             {/* <div className="comments"> */}
               {comments?.length > 3? comments?.map(comment => <div className="pro-comment"><NavLink to={`/articles/${comment.article_id}`}> <div className="p-comment">{"- "}{comment.comment}</div><div className="comment-title">From: {comment.articleTitle}</div></NavLink></div>).slice(comments?.length -4,comments?.length -1):comments?.map(comment => <div className="pro-comment"><NavLink to={`/articles/${comment.article_id}`}> <div className="p-comment">{"- "}{comment.comment}</div><div className="comment-title">From: {comment.articleTitle}</div></NavLink></div>)}
             {/* </div> */}
+            <div></div>
           </div>
             <div className="pro-score-container">
               <div>
-                {proRating?<div className="pro-score">User Score: {proRating}%</div>:"Not enough info"}
+                {proRating? <div className="pro-score">User Score: {proRating}%</div>:"Not enough info"}
               </div>
+              {proRating && (proRating >0 && proRating < 50)? <img className="badge" src="https://cdn.discordapp.com/attachments/920285009099751524/926305067605315604/cap.png"/>:null}
+              {proRating && (proRating >0 && proRating < 50)? <div className="userlabel">This user has been deemed an arbiter of untruth</div>:null}
+              {proRating && (proRating >75)? <img className="badge" src="https://cdn.discordapp.com/attachments/920285009099751524/926389160141529148/truthbadge.png"/>:null}
+              {proRating && (proRating >75)? <div className="userlabel">This user has been deemed an paragon of truth</div>:null}
             </div>
         </div>
         <div>

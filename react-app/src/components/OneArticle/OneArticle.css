@@ -34,6 +34,8 @@
     width: fit-content;
     gap: 2rem;
     padding: 0 2rem;
+    opacity: 0.7;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253), -3px -3px 5px rgba(0, 0, 0, 0.253) inset, 2px 2px 10px rgba(255, 255, 255, 0.253)inset ;
 }
 .btn{
     width:6rem;
@@ -225,11 +227,11 @@
     text-align: flex-start;
     height:55rem;
     width:40rem;
-    background:#ffffff3d;
+    background: linear-gradient(-135deg, rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.15));
     backdrop-filter: blur( 6px );
     border-top-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.253);
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253), -3px -3px 5px rgba(0, 0, 0, 0.253) inset, 2px 2px 10px rgba(255, 255, 255, 0.253)inset ;
     padding-bottom: 1rem;
 }
 .comments-box-title{
@@ -271,7 +273,7 @@
     align-items:center;
     /* border: 1rem solid grey; */
     margin-bottom: 2rem;
-    box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.253);
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253), -3px -3px 5px rgba(0, 0, 0, 0.253) inset, 2px 2px 10px rgba(255, 255, 255, 0.253)inset ;
 
 }
 .screen{
@@ -282,10 +284,12 @@
     justify-content:flex-start;
     height:90%;
     width:100%;
-    /* border-top-left-radius: 15px; */
+    border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    background:#fff5e946;
-    border:1rem solid #fff5e900;
+    background: linear-gradient(-115deg, #d1bea746, rgba(255, 255, 255, 0.397));
+
+    /* border:1rem solid #fff5e900; */
+    padding:1rem;
     overflow: auto;
 }
 .screen::-webkit-scrollbar{
@@ -365,7 +369,7 @@
     font-weight: 200;
     transform:scale(1);
     z-index: 10000;
-    box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.253);
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.253), -3px -3px 5px rgba(0, 0, 0, 0.253) inset, 2px 2px 10px rgba(255, 255, 255, 0.253)inset ;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
