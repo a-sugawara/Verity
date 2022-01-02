@@ -9,6 +9,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [bool, setBool] = useState(false)
+  const [ebool, seteBool] = useState(false)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -24,6 +25,7 @@ const LoginForm = () => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
+      seteBool(true)
       setErrors(data);
     }
   };
@@ -46,9 +48,11 @@ const LoginForm = () => {
       >
 
 
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+            <div className={`errors errors-${ebool}`}>
+                {errors.map((error, ind) => (
+                <div key={ind}>{error}</div>
+            ))}
+            </div>
         <div className="form-title">
           Login
         </div>

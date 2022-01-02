@@ -184,7 +184,7 @@ const Article = ({ article, idx, bool, zIndex, parent, direction='a' }) => {
                     <div className="cardbtn">
                         <a target="_blank" href={article.description}>Source</a>
                      </div>
-                     <div className="flexrow">Posted by: <NavLink to={`/users/${article.user_id}`}>{article.username}</NavLink></div><br/>{article.ratings.len >0?article.ratings.sum/article.ratings.len:0}% accuracy rating<br/> {article.comments} comments
+                     <div className="flexrow">Posted by: <NavLink to={`/users/${article.user_id}`}>{article.username}</NavLink></div><br/>{article.ratings.len >0?Math.round(article.ratings.sum/article.ratings.len):0}% accuracy rating<br/> {article.comments} comments
                 </div>
             </div>
             <div className="card-info">

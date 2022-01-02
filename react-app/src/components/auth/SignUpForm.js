@@ -11,6 +11,7 @@ const SignUpForm = () => {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [bool, setBool] = useState(false)
+  const [ebool, seteBool] = useState(false)
   const user = useSelector(state => state.session.user);
   const history = useHistory()
   const dispatch = useDispatch();
@@ -21,12 +22,30 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    let errs = []
+    if (username.length <3){
+      errs.push('Username must be at least 3 characters')
+    }
+    if (username.length >30){
+      errs.push('Username cannont exceed 30 characters')
+    }
+    if(!/(@)/gi.test(email)){
+      console.log(email)
+      errs.push('Please enter a valid email address')
+    }
+    if(errs.length){
+      seteBool(true)
+      setErrors(errs)
+      return
+    }
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
+        seteBool(true)
         setErrors(data)
       }
     }else{
+      seteBool(true)
       setErrors(["Passwords must match"])
     }
   };
@@ -55,10 +74,10 @@ const SignUpForm = () => {
     <form
       className={`form sign-form sign-form-${bool}`}>
 
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-
+        <div className={`errors errors-${ebool}`}>
+                {errors.map((error, ind) => (
+                <div key={ind}>{error}</div>
+            ))}</div>
         <div className="form-title">
           Sign Up
         </div>
@@ -70,16 +89,18 @@ const SignUpForm = () => {
           onChange={updateUsername}
           className="input"
           value={username}
+          required
           ></input>
 
 
         <input
           placeholder='Email'
-          type='text'
+          type='email'
           name='email'
           onChange={updateEmail}
           className="input"
           value={email}
+          required
           ></input>
 
 
@@ -90,6 +111,7 @@ const SignUpForm = () => {
           onChange={updatePassword}
           value={password}
           className="input"
+          required
           ></input>
 
 

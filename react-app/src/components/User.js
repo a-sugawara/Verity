@@ -44,7 +44,7 @@ function User() {
           </div>
             <div className="pro-score-container">
               <div>
-                {proRating? <div className="pro-score">User Score: {proRating}%</div>:"Not enough info"}
+                {proRating? <div className="pro-score">User Score: {Math.round(proRating)}%</div>:"Not enough info"}
               </div>
               {proRating && (proRating >0 && proRating < 50)? <img className="badge" src="https://cdn.discordapp.com/attachments/920285009099751524/926305067605315604/cap.png"/>:null}
               {proRating && (proRating >0 && proRating < 50)? <div className="userlabel">This user has been deemed an arbiter of untruth</div>:null}

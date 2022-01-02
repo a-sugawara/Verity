@@ -144,7 +144,7 @@ export default function OneArticle(){
                     <div className="cardbtn">
                         <a target="_blank" href={article?.description}>Source</a>
                     </div>
-                    <div className="flexrow">Posted by: <NavLink to={`/users/${article?.user_id}`}>{article?.username}</NavLink></div><br/>{averageRating}% accuracy rating
+                    <div className="flexrow">Posted by: <NavLink to={`/users/${article?.user_id}`}>{article?.username}</NavLink></div><br/>{Math.round(averageRating)}% accuracy rating
                     </div>
                 </div>
                 <div className="card-info">

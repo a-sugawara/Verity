@@ -22,6 +22,7 @@ class ArticleForm(FlaskForm):
     article = TextAreaField('article', validators=[DataRequired()])
 
     image_url = StringField('image_url', validators=[DataRequired()])
+    
 class ArticleEditForm(FlaskForm):
     user_id = IntegerField('user_id', validators=[DataRequired()])
     title = StringField('title', validators=[DataRequired()])
