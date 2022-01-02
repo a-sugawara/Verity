@@ -20,6 +20,7 @@ import CallToAction from './components/Splash/CallToAction';
 import AllArticlesList from './components/AllArticlesList'
 import SearchedArticles from './components/SearchedArticles'
 import Footer from './components/Footer';
+import AboutMe from './components/AboutMe'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -86,6 +87,10 @@ function App() {
         <Route path='/declare' exact={true} >
         <NavBar />
           <ArticleForm/>
+        </Route>
+        <Route path='/aboutme' exact={true} >
+          <NavBar />
+          <AboutMe/>
         </Route>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <NavBar />

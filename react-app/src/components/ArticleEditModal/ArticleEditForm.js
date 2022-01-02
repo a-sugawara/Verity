@@ -96,7 +96,7 @@ const ArticleEditForm = ({currentArticle, setShowModal}) =>{
                 value = {article}
                 onChange= {(e) => setArticle(e.target.value)}/>
                 <button type='submit'
-                    className="article-submit-button">Submit</button>
+                    className="navbtn">Submit</button>
         </form>
     </>
 
