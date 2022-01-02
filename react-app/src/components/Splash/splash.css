@@ -25,6 +25,39 @@
     align-items: center;
     background-color:#f6f6f6;
 }
+.welcome-text{
+    font-size: calc((2vw + 2vh)/2);
+}
+.verity-word{
+    font-size: calc((2vw + 2vh)/2);
+    transition:all 3s ease-in-out;
+}
+.verity-word-true{
+    font-size: calc((6vw + 6vh)/2);
+}
+.med-word{
+    transition:all 2s ease-in-out;
+    font-size: calc((2vw + 2vh)/2);
+}
+.med-word-true{
+    font-size: calc((3.5vw + 3.5vh)/2);
+}
+.large-word{
+    transition:all 1s ease-in-out;
+    font-size: calc((2vw + 2vh)/2);
+
+}
+.large-word-true{
+    font-size: calc((4.5vw + 4.5vh)/2);
+}
+.keep-scrolling{
+    transition:all 3s ease-in-out;
+
+}
+.keep-scrolling-true{
+    transform: translateY(400%)
+}
+
 .splash-card1{
     display:flex;
     justify-content:center;
@@ -176,7 +209,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     transform: scale(0.5) translate(0%,-50%);
-    transition:all 1s ease-in-out;
+    transition:all 2s ease-in-out;
 }
 .mushroom-bottom{
     background: url(https://cdn.discordapp.com/attachments/920285009099751524/921681458307936256/mushroom-bottom.png);
@@ -187,7 +220,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     transform: scale(0.5) translate(0%,250%);
-    transition:all 1s ease-in-out;
+    transition:all 2s ease-in-out;
 }
 .mushroom-container:hover > .mushroom-top{
     transform: scale(1.5) translate(0%,-250%);
@@ -217,6 +250,13 @@
     justify-content: center;
     align-items: center;
     /* padding-bottom: 40vh; */
+    position: relative;
+}
+.percentage{
+    position: absolute;
+    font-size:7rem;
+    transform:translate(-30%,-50%);
+    z-index: 100;
 }
 .rater-holder{
     display: flex;
@@ -365,7 +405,7 @@
     transition:all 1s ease-in-out;
 
 }
-.circle-progress-1{
+.circle-progress-24{
     height:100%;
     width: 100%;
     position:absolute;
@@ -378,7 +418,7 @@
     transition:all 1s ease-in-out;
 
 }
-.circle-progress-50{
+.circle-progress-55{
     height:100%;
     width: 100%;
     position:absolute;

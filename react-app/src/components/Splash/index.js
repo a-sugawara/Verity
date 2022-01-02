@@ -1,36 +1,32 @@
-import React from 'react'
+import React, { useState} from 'react'
 import LoginModal from '../auth/LoginModal'
 import SignUpModal from '../auth/SignUpModal'
 
+
 export default function Splash() {
+    const [bool, setBool] = useState(false)
     return (
-        <div className="splash-container">
+        <div
+            onMouseEnter={() => setBool(true)}
+            onMouseLeave={() => setBool(false)}
+            className="splash-container welcome-text">
             <div>
                 Welcome
                 <br/>
                 <br/>
+                At <span className={`verity-word verity-word-${bool} `} > Verity</span>, our mission is a simple one.
                 <br/>
+
                 <br/>
-                At Verity, our mission is a simple one.
+                <span className={`bold med-word med-word-${bool}`}>Find</span> the  <span className={`large-word large-word-${bool}`}>truth</span>.
                 <br/>
+
                 <br/>
-                <br/>
-                <br/>
-                Find the truth.
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                Keep Scrolling to find out how you can participate in
-                <br/>
-                our exploration.
+                    <div className={`keep-scrolling keep-scrolling-${bool}`}>Keep Scrolling to find out how you can participate in <br/> our exploration. Here are some examples of "facts"</div>
+
                 <br/>
                 <br/>
                 <br/>
-                <br/>
-                Below is an example for what a fact looks like
             </div>
         </div>
     )
