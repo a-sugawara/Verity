@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
 
 export default function Example() {
-    const [rate,setRate] = useState("")
+    const [rate,setRate] = useState(0)
 
     let bool
-    if(rate === 1){
+    if(rate === 24){
         bool ="false"
-    }else if(rate===50){
+    }else if(rate===55){
         bool = "maybe"
     }else if(rate=== 100){
         bool = "true"
@@ -16,10 +16,10 @@ export default function Example() {
 
 
     const falser = () =>{
-        setRate(1)
+        setRate(24)
     }
     const mayber = () =>{
-        setRate(50)
+        setRate(55)
     }
     const truther = () =>{
         setRate(100)
@@ -28,6 +28,9 @@ export default function Example() {
         <div>
             <div className="splash-container-example">
                 <div className="truth-animation">
+                    <div className="percentage">
+                        {`${rate}`}%
+                    </div>
 
                         {/* <br/>
                         <div className="meter-card">
@@ -91,13 +94,11 @@ export default function Example() {
                     <br/>
                     <br/>
                     <br/>
-                    {rate===1? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/922093439854731274/UnVerifiedlogo.png"/>:null}
-
+                    {rate===24? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/922093439854731274/UnVerifiedlogo.png"/>:null}
                     {rate===100? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/921974219733082173/Verified.png"/>:null}
                     <br/>
-                    {rate===1? 'If an articles ratings is below 50%, it will recieve this "X" ':null}
-                    {rate===50? 'If an articles ratings is above 50%, but under 75%, it will be marked "up for debate" ':null}
-
+                    {rate===24? 'If an articles ratings is below 50%, it will recieve this "X" ':null}
+                    {rate===55? 'If an articles ratings is above 50%, but under 75%, it will be marked "up for debate" ':null}
                     {rate===100? 'If an articles ratings is above 75%, it will recieve this check ':null}
                     <br/>
                     <br/>
