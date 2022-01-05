@@ -52,7 +52,7 @@ const editRating = (payload, oldRating) => ({
   payload,
   oldRating
 })
-const addNewComment = (payload) => ({
+export const addNewComment = (payload) => ({
   type: ADD_COMMENT,
   payload
 })
@@ -60,7 +60,7 @@ const addEditedComment = (payload) => ({
   type: EDIT_COMMENT,
   payload
 })
-const removeComment = (payload) => ({
+export const removeComment = (payload) => ({
   type: DELETE_COMMENT,
   payload
 })
@@ -245,7 +245,7 @@ export const postComment = (commentInfo) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    dispatch(addNewComment(data))
+    // dispatch(addNewComment(data))
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -289,7 +289,7 @@ export const deleteComment = (id) => async (dispatch) => {
     method: 'DELETE',
   })
   if(response.ok) {
-    dispatch(removeComment(id))
+    // dispatch(removeComment(id))
   } else if (response.status < 500){
     const data = await response.json()
     if (data.errors) {

@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import{ NavLink, useParams,useHistory } from 'react-router-dom'
+import { io } from 'socket.io-client';
 import './OneArticle.css'
-import { getOneArticle, addRating,putRating, postComment, editComment, deleteComment } from "../../store/articles";
+import  { getOneArticle, addRating,putRating, postComment, deleteComment , addNewComment, removeComment } from "../../store/articles";
 
 import ArticleEditModal from "../ArticleEditModal"
 import ArticleDeleteModal from "../DeleteArticleModal";
+
+
+let socket
 
 export default function OneArticle(){
     const [rate,setRate] = useState('')
@@ -64,6 +68,17 @@ export default function OneArticle(){
     let dispatch = useDispatch()
     useEffect(() => {
         dispatch(getOneArticle(id))
+        socket = io();
+
+        socket.on("add_com", (comment)=>{
+            console.log('did this hit??????????????????', comment)
+            dispatch(addNewComment(comment))})
+
+        socket.on("del_com", (commentid)=>{dispatch(removeComment(commentid))})
+
+        return (() => {
+            socket.disconnect()
+        })
     },[dispatch])
 
     const handleSubmit = async (e) => {
