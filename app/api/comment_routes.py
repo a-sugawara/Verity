@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request, session
 from app.models import Comment, db
 from app.forms import CommentForm
+from app.socket import handle_add_comment,handle_del_comment
 
 comment_routes = Blueprint('comments', __name__)
 
@@ -29,6 +30,7 @@ def post_a_comment():
         db.session.add(comment)
         db.session.commit()
 
+        handle_add_comment(comment.to_dict())
         return comment.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
@@ -39,6 +41,7 @@ def delete_a_comment(id):
     if not specific_comment:
         return {'errors': 'Comment not found'}, 401
     db.session.delete(specific_comment)
+    handle_del_comment(id)
     db.session.commit()
     return {"message": "Successful deletion"}
 

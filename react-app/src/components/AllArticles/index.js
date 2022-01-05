@@ -83,66 +83,7 @@ export default function AllArticles(){
     const behindArticle = articles && articles.length >0 && direction !== 'a' && (direction === 'prev' ? articles[artIdx-1 >= 0 ? artIdx -1 : articles.length-1] : articles[artIdx+1 < articles.length ? artIdx + 1 : 0]);
     let cards
     if (articles?.length > 0){
-    //     cards = articles?.map((article, idx) =><div key={idx} className={`article-card-container`}>
-    //         <div className={`article-card test-${direction} article-card-${bool} `}>
-    //             <div className="img-description">
-    //                 <div className="img-holder">
-    //                     <img
-    //                         src={article.images[0]||"https://cdn.discordapp.com/attachments/920285009099751524/921089742756532284/unknown.png"}
-    //                         className="card-img" />
-    //                 </div>
-    //                 <div className="card-description">
-    //                 <div className="navbtn">
-    //                     <a target="_blank" href={article.description}>Source</a>
-    //                 </div>
-    //                 Posted by: {article.username}<br/>{article.ratings.len >0?article.ratings.sum/article.ratings.len:0}% accuracy rating<br/> {article.comments} comments
-    //                 </div>
-    //             </div>
-    //             <div className="card-info">
-    //                 <div className="card-title">
-    //                     {article.title}
-    //                 </div>
-    //                 <div className="card-article">
-    //                     {article.article}
-    //                     <br/>
-    //                     <p></p>
-    //                     <p></p>
-    //                     <NavLink to={`/articles/${article.id}`}>
-    //                     <div className="navbtn">Rate and Comment</div>
-    //                     </NavLink>
-    //                     <br/>
-    //                     <br/>
-    //                     <br/>
-    //                     <br/>
-    //                     {(article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )>75? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/921974219733082173/Verified.png"/>:null}
-    //                     {(article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )>0 && (article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )<50? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/922093439854731274/UnVerifiedlogo.png"/>:null}
-    //                     <br/>
-    //                     {(article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )>75? <span className='weak-grey'>This has been deemed an article of truth</span>:null}
-    //                     {(article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )>0 && (article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )<50? <span className='weak-grey'>This has been deemed an article of untruth</span>:null}
-
-    //                 </div>
-    //             </div>
-
-
-    //         {/* <NavLink to={`/articles/${article.id}`}>
-    //             <div className="article-title-bar">
-    //                 <div className="article-title">{article.title.toUpperCase()}</div>
-    //             </div>
-    //         </NavLink>
-    //             <div className="article">
-    //                 <div className="article-text">
-    //                     {article.article}
-    //                 </div>
-    //                 <div className="article-details">
-    //                     Posted by: {article.username} - {article.ratings.len >0?article.ratings.sum/article.ratings.len:0}% accuracy rating - {article.comments} comments
-    //                 </div>
-    //         <div className="article-description">
-    //             <a target="_blank" href={article.description}>Source</a>
-    //         </div>
-    //             </div> */}
-    //         </div>
-    //     </div>
-    //     )
+   
         return (<div className="full-container">
             <div className="all-articles-page">
                 <div className="cards-container">
