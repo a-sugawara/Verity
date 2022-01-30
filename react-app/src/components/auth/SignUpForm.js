@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { useHistory, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import "./forms.css"
 
@@ -13,7 +13,7 @@ const SignUpForm = () => {
   const [bool, setBool] = useState(false)
   const [ebool, seteBool] = useState(false)
   const user = useSelector(state => state.session.user);
-  const history = useHistory()
+
   const dispatch = useDispatch();
   useEffect(() => {
     setBool(true)

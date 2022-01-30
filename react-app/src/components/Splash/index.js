@@ -1,6 +1,4 @@
 import React, { useState} from 'react'
-import LoginModal from '../auth/LoginModal'
-import SignUpModal from '../auth/SignUpModal'
 
 
 export default function Splash() {

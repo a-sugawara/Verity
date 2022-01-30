@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { Modal } from '../context/Modal'
 import LoginForm from './LoginForm';
-import {login} from '../../store/session';
 
 function LoginModal(){
 

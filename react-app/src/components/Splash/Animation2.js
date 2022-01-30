@@ -16,7 +16,7 @@ From about 420 million to 370 million years ago, a mysterious genus of creatures
                     Posted by: Bobby
                     <br/>
                     100% accuracy rating
-                    <a className="navbtn" target="_blank" href={'https://www.smithsonianmag.com/smart-news/long-before-trees-overtook-the-land-earth-was-covered-by-giant-mushrooms-13709647/'}>Source</a>
+                    <a className="navbtn" rel="noreferrer" target="_blank" href={'https://www.smithsonianmag.com/smart-news/long-before-trees-overtook-the-land-earth-was-covered-by-giant-mushrooms-13709647/'}>Source</a>
                 </div>
                 <div className="splash-card1-2">
                     <div className="mushroom-container">

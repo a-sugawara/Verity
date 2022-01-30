@@ -94,8 +94,8 @@ export default function Example() {
                     <br/>
                     <br/>
                     <br/>
-                    {rate===24? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/922093439854731274/UnVerifiedlogo.png"/>:null}
-                    {rate===100? <img className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/921974219733082173/Verified.png"/>:null}
+                    {rate===24? <img alt="check" className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/922093439854731274/UnVerifiedlogo.png"/>:null}
+                    {rate===100? <img alt="xmarks" className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/921974219733082173/Verified.png"/>:null}
                     <br/>
                     {rate===24? 'If an articles ratings is below 50%, it will recieve this "X" ':null}
                     {rate===55? 'If an articles ratings is above 50%, but under 75%, it will be marked "up for debate" ':null}
