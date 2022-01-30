@@ -454,3 +454,10 @@ textarea:hover{
 .userlabel{
     font-size: 2rem;
 }
+
+@media only screen and (max-height: 1000px) {
+
+body {
+    min-height:150vh
+}
+}

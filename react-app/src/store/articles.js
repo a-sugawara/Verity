@@ -242,11 +242,8 @@ export const postComment = (commentInfo) => async (dispatch) => {
       commentInfo
     )
   })
-
   if (response.ok) {
-    const data = await response.json();
-    // dispatch(addNewComment(data))
-    return null;
+    return
   } else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) {

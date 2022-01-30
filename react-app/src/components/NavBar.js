@@ -1,6 +1,6 @@
 
 import React, {useState, useEffect} from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import {useHistory } from 'react-router-dom';
 import {useSelector} from 'react-redux'
 import LogoutButton from './auth/LogoutButton';
 import LoginModal from '../components/auth/LoginModal';
