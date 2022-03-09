@@ -30,7 +30,7 @@ const SignUpForm = () => {
       errs.push('Username cannont exceed 30 characters')
     }
     if(!/(@)/gi.test(email)){
-      console.log(email)
+
       errs.push('Please enter a valid email address')
     }
     if(errs.length){

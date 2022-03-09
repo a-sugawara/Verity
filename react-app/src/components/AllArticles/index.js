@@ -77,7 +77,6 @@ export default function AllArticles() {
 
         }
     }
-
     const article = articles && articles.length > 0 && articles[artIdx]
     const behindArticle = articles && articles.length > 0 && direction !== 'a' && (direction === 'prev' ? articles[artIdx - 1 >= 0 ? artIdx - 1 : articles.length - 1] : articles[artIdx + 1 < articles.length ? artIdx + 1 : 0]);
     if (articles?.length > 0) {
@@ -107,7 +106,5 @@ export default function AllArticles() {
     return <div></div>
 
 }
-
-
 
 const MemoArticle = memo(Article)

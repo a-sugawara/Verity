@@ -352,9 +352,7 @@ export default function reducer(state = initialState, action) {
       return newState
     case DELETE_COMMENT:
       newState = { ...state}
-      console.log(action.payload)
       const delComIdx = newState.currentArticle.comments.findIndex(comment => comment.id === action.payload)
-      console.log(delComIdx)
       newState.currentArticle.comments.splice(delComIdx, 1)
       return newState
     default:
