@@ -71,7 +71,6 @@ export default function OneArticle(){
         socket = io();
 
         socket.on("add_com", (comment)=>{
-            console.log('did this hit??????????????????', comment)
             dispatch(addNewComment(comment))})
 
         socket.on("del_com", (commentid)=>{dispatch(removeComment(commentid))})

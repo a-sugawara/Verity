@@ -28,7 +28,6 @@ function User() {
     return null;
   }
 
-  console.log(articles)
 
   return (
     <div className="full-container">
