@@ -48,3 +48,5 @@ const Article = ({ article, idx, bool, zIndex, parent, direction = 'a' }) => {
         </div>
     )
 }
+
+export default Article
