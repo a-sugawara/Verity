@@ -1,11 +1,15 @@
 import{ NavLink } from 'react-router-dom'
 
-const Tile = ({article, idx}) =>(
-    <div key={idx} className={`list-card-container`}>
-                        {(article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )>75? <div className={`list-sidebar-green`}></div>:null}
-                        {(article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )>0 && (article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )<50? <div className={`list-sidebar-red`} ></div>:null}
-                        {(article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )===0? <div className={`list-sidebar`} ></div>:null}
-                        {(article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )>=50 && (article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )<=75? <div className={`list-sidebar-yellow`} ></div>:null}
+const Tile = ({article, idx}) =>{
+    let avg = article.ratings.sum/article.ratings.len || 0
+
+
+
+    return <div key={idx} className={`list-card-container`}>
+                        {avg>75? <div className={`list-sidebar-green`}></div>:null}
+                        {avg>0 && (article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )<50? <div className={`list-sidebar-red`} ></div>:null}
+                        {avg===0? <div className={`list-sidebar`} ></div>:null}
+                        {avg>=50 && (article.ratings.len >0?article.ratings.sum/article.ratings.len:0 )<=75? <div className={`list-sidebar-yellow`} ></div>:null}
                     <div className="list-title">
                         <NavLink to={`/articles/${article.id}`}>
                             <div className="titlebtn">{article.title}</div>
@@ -36,5 +40,5 @@ const Tile = ({article, idx}) =>(
 
                     </div>
                 </div>
-)
+}
  export default Tile
