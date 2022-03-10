@@ -5,6 +5,7 @@ import './AllArticles.css'
 import './AllArticlesRevision.css'
 
 const Article = ({ article, idx, bool, zIndex, parent, direction = 'a' }) => {
+    let avg = article.ratings.sum/ article.ratings.len
     return (
         <div key={idx} className={parent ? `article-card-container` : `article-card-container-next`} style={{ zIndex, position: parent ? 'relative' : 'absolute' }}>
 
@@ -33,12 +34,12 @@ const Article = ({ article, idx, bool, zIndex, parent, direction = 'a' }) => {
                         </NavLink>
                         <div>
                             <div>
-                                {(article.ratings.len > 0 ? article.ratings.sum / article.ratings.len : 0) > 75 ? <img alt="checkmark" className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/921974219733082173/Verified.png" /> : null}
-                                {(article.ratings.len > 0 ? article.ratings.sum / article.ratings.len : 0) > 0 && (article.ratings.len > 0 ? article.ratings.sum / article.ratings.len : 0) < 50 ? <img alt="xmark" className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/922093439854731274/UnVerifiedlogo.png" /> : null}
+                                {(article.ratings.len > 0 ? avg : 0) > 75 ? <img alt="checkmark" className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/921974219733082173/Verified.png" /> : null}
+                                {(article.ratings.len > 0 ? avg : 0) > 0 && (article.ratings.len > 0 ? avg : 0) < 50 ? <img alt="xmark" className="verified-img" src="https://cdn.discordapp.com/attachments/920285009099751524/922093439854731274/UnVerifiedlogo.png" /> : null}
                             </div>
                             <div>
-                                {(article.ratings.len > 0 ? article.ratings.sum / article.ratings.len : 0) > 75 ? <span className='weak-grey'>This has been deemed an article of truth</span> : null}
-                                {(article.ratings.len > 0 ? article.ratings.sum / article.ratings.len : 0) > 0 && (article.ratings.len > 0 ? article.ratings.sum / article.ratings.len : 0) < 50 ? <span className='weak-grey'>This has been deemed an article of untruth</span> : null}
+                                {(article.ratings.len > 0 ? avg : 0) > 75 ? <span className='weak-grey'>This has been deemed an article of truth</span> : null}
+                                {(article.ratings.len > 0 ? avg : 0) > 0 && (article.ratings.len > 0 ? avg : 0) < 50 ? <span className='weak-grey'>This has been deemed an article of untruth</span> : null}
                             </div>
 
                         </div>
