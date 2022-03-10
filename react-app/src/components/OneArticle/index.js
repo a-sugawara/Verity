@@ -14,7 +14,6 @@ let socket
 export default function OneArticle(){
     const [rate,setRate] = useState('')
     const [comment, setComment] = useState('')
-    const [type, setType] = useState(false)
     const [errBool, setErrBool] = useState(false)
     const [errors, setErrors] = useState([])
     const [commentConfrim, setCommentConfrim] = useState('')
@@ -137,7 +136,6 @@ export default function OneArticle(){
     }
 
 
-    const rating = article?.ratings.find(rating => rating.user_id === sessionUser?.id)
     const averageRating = (article?.ratings.reduce((acc, a)=>acc+a.rating,0))/(article?.ratings.length) || 0
 
 
@@ -184,30 +182,6 @@ export default function OneArticle(){
                         </div>
                     </div>
                 </div>
-            {/* </div>
-            <div className="cards-container">
-                <div className={`article-card-container`}>
-                    <div className={`article-card`}>
-                        <div className="article-title-bar">
-                            <div className="article-title">{article?.title.toUpperCase()}</div>
-                        </div>
-                        <div className="article">
-                            <div className="article-text">
-                                {article?.article}
-                            </div>
-                            <div className="article-description">
-                                <a target="_blank" href={article?.description}>Source</a>
-                            </div>
-                            <div className="article-details">
-                                Posted by: {article?.username} - {averageRating}% accuracy rating
-                            </div>
-                            </div>
-                            </div>
-                            </div>
-                            <div className="navbtn-holder-col">
-                            <ArticleEditModal />
-                            <div className="navbtn">Delete</div>
-                        </div> */}
             </div>
             <div className="btnbox-white">
                 <div
@@ -317,7 +291,6 @@ export default function OneArticle(){
                             >submit</button>
                     </form>
                 </div>
-                {/* <div className="keyboard"></div> */}
             </div>
         </div>)
 
