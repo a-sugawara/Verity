@@ -5,29 +5,29 @@ Verity is a site dedicated to finding the truth.
 # Verity at a glance
 
 
-![Splash Gif](https://cdn.discordapp.com/attachments/920285009099751524/925601744002625546/splash1.gif)
+![Splash Gif](https://cdn.discordapp.com/attachments/920285009099751524/925601744002625546/splash1.gif?ex=661f4bcc&is=660cd6cc&hm=882d5134ecde9b8467e09fac53ab14d800fdc76aeb34bda37ed490069a3f6d04&)
 * When you first enter Verity, you're greeted with a splash page that informs you what the site is about!
 * The splash page has custom css animation that only use vanilla css, html, and react
 
 
 
-![Carousel Gif](https://cdn.discordapp.com/attachments/920285009099751524/925604498280423434/shortercar.gif)
+![Carousel Gif](https://cdn.discordapp.com/attachments/920285009099751524/925601681461346365/carousel.gif?ex=661f4bbd&is=660cd6bd&hm=55d0247aec108b7295343359e1d7d63de1cba7d4d001c8f2436e7755b0237d9a&)
 * The main way to naviagte through facts is a custom carousel which was also vanilla css (no animation libraries).
 
 
 
-![Delete Modal Gif](https://cdn.discordapp.com/attachments/920285009099751524/925606175700058153/deletemodal.gif)
+![Delete Modal Gif](https://media.discordapp.net/attachments/920285009099751524/925601956708376576/oneArtpageLarge.gif?ex=661f4bff&is=660cd6ff&hm=7f77cfd5de4c9b3df651711273d116e0ca6e8a3f933458ced8e8b842a1d4c029&=&width=402&height=226)
 * Leveraging react and redux, Verity is able to have dynamic feeling modals and buttons for a better user experience.
 
 
 # Frontend Technologies Used
-<img src="https://cdn.discordapp.com/attachments/920285009099751524/925631805267271690/frontend-tech.png" width="300"/>
+<img src="https://media.discordapp.net/attachments/920285009099751524/925631805267271690/frontend-tech.png?ex=661f67cb&is=660cf2cb&hm=ee814f625b0cf6df28b9e344a7efcc928ae3c6c82bbb4fcab9a3e019904db263&=&format=webp&quality=lossless&width=619&height=909" width="300"/>
 
 # Backend Technologies Used
-<img src="https://cdn.discordapp.com/attachments/920285009099751524/925631805057548308/backend-tech.png" width="300"/>
+<img src="https://media.discordapp.net/attachments/920285009099751524/925631805057548308/backend-tech.png?ex=661f67cb&is=660cf2cb&hm=03d0078673e9501acb33e7132c257d47bffaaa64ecc17bc9e0a83881384e41ff&=&format=webp&quality=lossless&width=619&height=909" width="300"/>
 
 # Application Architecture
-<img src="https://cdn.discordapp.com/attachments/920285009099751524/925650376110256208/techArchnoback.png" width="900"/>
+<img src="https://media.discordapp.net/attachments/920285009099751524/925650376110256208/techArchnoback.png?ex=661f7917&is=660d0417&hm=99d6dc2c4225e8f940e12085083c5182704ec7595f7bfdf842bb5d48f7e625c4&=&format=webp&quality=lossless&width=1643&height=909" width="900"/>
 
 ### 1. User hit button/submits form (controlled component)/loads a page(useEffect) and hits a thunk.
 ### 2. The thunk sends a fetch request to the api server.
