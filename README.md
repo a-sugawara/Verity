@@ -9,14 +9,10 @@ Verity is a site dedicated to finding the truth.
 * When you first enter Verity, you're greeted with a splash page that informs you what the site is about!
 * The splash page has custom css animation that only use vanilla css, html, and react
 
-
-
-![Carousel Gif](https://cdn.discordapp.com/attachments/920285009099751524/925601681461346365/carousel.gif?ex=661f4bbd&is=660cd6bd&hm=55d0247aec108b7295343359e1d7d63de1cba7d4d001c8f2436e7755b0237d9a&)
+![Carousel Gif](https://cdn.discordapp.com/attachments/920285009099751524/925604498280423434/shortercar.gif?ex=661f4e5d&is=660cd95d&hm=a0ad76c0a420f8d6e4f188d4e3d695ba30b8644dba7ebe48c0c196bcc35be75b&)
 * The main way to naviagte through facts is a custom carousel which was also vanilla css (no animation libraries).
 
-
-
-![Delete Modal Gif](https://media.discordapp.net/attachments/920285009099751524/925601956708376576/oneArtpageLarge.gif?ex=661f4bff&is=660cd6ff&hm=7f77cfd5de4c9b3df651711273d116e0ca6e8a3f933458ced8e8b842a1d4c029&=&width=402&height=226)
+![Delete Modal Gif](https://cdn.discordapp.com/attachments/920285009099751524/925606175700058153/deletemodal.gif?ex=661f4fed&is=660cdaed&hm=00a89081366b8b53af616c12bf1bfe06fe1712bea404c867f7d66d4cd2e825b0&)
 * Leveraging react and redux, Verity is able to have dynamic feeling modals and buttons for a better user experience.
 
 
